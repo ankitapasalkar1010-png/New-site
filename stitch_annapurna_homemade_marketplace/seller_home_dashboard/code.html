@@ -1,0 +1,1397 @@
+﻿<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Annapurna - Seller Dashboard</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<!-- Google Fonts: DM Sans & Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface": "#1e1b16",
+                    "tertiary-fixed-dim": "#e2c0a3",
+                    "primary-container": "#c74e00",
+                    "surface-dim": "#e0d9d0",
+                    "background": "#fff8f0",
+                    "on-primary": "#ffffff",
+                    "surface": "#fff8f0",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-highest": "#e8e2d8",
+                    "on-primary-container": "#fffbff",
+                    "inverse-on-surface": "#f7f0e6",
+                    "on-error": "#ffffff",
+                    "on-primary-fixed": "#360f00",
+                    "primary-fixed-dim": "#ffb596",
+                    "surface-container-low": "#faf3e9",
+                    "on-tertiary": "#ffffff",
+                    "tertiary": "#705740",
+                    "surface-variant": "#e8e2d8",
+                    "surface-tint": "#a33e00",
+                    "on-secondary-fixed-variant": "#005312",
+                    "inverse-surface": "#33302a",
+                    "surface-container-high": "#eee7dd",
+                    "tertiary-fixed": "#ffdcbe",
+                    "error-container": "#ffdad6",
+                    "primary-fixed": "#ffdbcd",
+                    "on-primary-fixed-variant": "#7c2e00",
+                    "secondary-fixed": "#a3f69c",
+                    "on-secondary-container": "#217128",
+                    "inverse-primary": "#ffb596",
+                    "error": "#ba1a1a",
+                    "on-surface-variant": "#594238",
+                    "secondary": "#1b6d24",
+                    "on-tertiary-fixed-variant": "#59422c",
+                    "tertiary-container": "#8b6f56",
+                    "outline": "#8c7166",
+                    "surface-bright": "#fff8f0",
+                    "on-secondary-fixed": "#002204",
+                    "surface-container": "#f4ede3",
+                    "on-tertiary-container": "#fffbff",
+                    "outline-variant": "#e0c0b3",
+                    "on-tertiary-fixed": "#291806",
+                    "on-error-container": "#93000a",
+                    "on-background": "#1e1b16",
+                    "secondary-fixed-dim": "#88d982",
+                    "on-secondary": "#ffffff",
+                    "primary": "#9f3d00",
+                    "secondary-container": "#a0f399"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px",
+                    "card": "1.5rem"
+            },
+            "spacing": {
+                    "md": "24px",
+                    "base": "8px",
+                    "lg": "48px",
+                    "margin-desktop": "64px",
+                    "margin-mobile": "16px",
+                    "xs": "4px",
+                    "sm": "12px",
+                    "xl": "80px",
+                    "gutter": "20px"
+            },
+            "fontFamily": {
+                    "headline-md": ["DM Sans"],
+                    "headline-xl": ["DM Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "label-md": ["Plus Jakarta Sans"],
+                    "headline-lg": ["DM Sans"],
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "headline-lg-mobile": ["DM Sans"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { background-color: theme('colors.background'); color: theme('colors.on-background'); font-family: 'Plus Jakarta Sans', sans-serif; }
+        h1, h2, h3, h4, h5, h6, .font-headline { font-family: 'DM Sans', sans-serif; }
+        
+        /* Ambient shadows */
+        .shadow-ambient {
+            box-shadow: 0 8px 24px -4px rgba(112, 87, 64, 0.08), 0 4px 8px -2px rgba(112, 87, 64, 0.04);
+        }
+        
+        /* Icon styling */
+        .icon-stamp {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        
+        /* Navigation Drawer Base (Hidden by default, shown via JS) */
+        #mobile-nav-drawer {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        #mobile-nav-drawer.open {
+            transform: translateX(0);
+        }
+        #drawer-overlay {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease-in-out;
+        }
+        #drawer-overlay.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+/* ── Add Menu Modal ─────────────────────────────────────────── */
+#addMenuModal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9000;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+}
+#addMenuModal.open {
+    display: flex;
+}
+#addMenuModalOverlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(30, 27, 22, 0.55);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    animation: overlayIn 0.2s ease;
+}
+@keyframes overlayIn {
+    from { opacity: 0; } to { opacity: 1; }
+}
+#addMenuModalPanel {
+    position: relative;
+    z-index: 1;
+    background: #fff8f0;
+    border-radius: 1.5rem;
+    box-shadow: 0 24px 64px -8px rgba(112, 87, 64, 0.22), 0 8px 24px -4px rgba(112, 87, 64, 0.12);
+    width: 100%;
+    max-width: 480px;
+    max-height: calc(100dvh - 32px);
+    overflow-y: auto;
+    animation: panelIn 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+@keyframes panelIn {
+    from { opacity: 0; transform: translateY(24px) scale(0.97); }
+    to   { opacity: 1; transform: translateY(0)   scale(1); }
+}
+#addMenuModalPanel:focus { outline: none; }
+
+.modal-field-error {
+    color: #ba1a1a;
+    font-size: 12px;
+    line-height: 16px;
+    margin-top: 4px;
+    display: none;
+}
+.modal-field-error.visible { display: block; }
+
+.modal-input {
+    width: 100%;
+    background: #f4ede3;
+    border: 1.5px solid #e0c0b3;
+    border-radius: 0.5rem;
+    padding: 10px 14px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 15px;
+    color: #1e1b16;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    outline: none;
+    -webkit-appearance: none;
+}
+.modal-input:focus {
+    border-color: #9f3d00;
+    box-shadow: 0 0 0 3px rgba(159, 61, 0, 0.12);
+}
+.modal-input.invalid {
+    border-color: #ba1a1a;
+    box-shadow: 0 0 0 3px rgba(186, 26, 26, 0.10);
+}
+select.modal-input { cursor: pointer; }
+
+/* ── Toast ────────────────────────────────────────────────── */
+#annapurnaToast {
+    position: fixed;
+    bottom: 88px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    z-index: 9500;
+    background: #33302a;
+    color: #f7f0e6;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 12px 20px;
+    border-radius: 9999px;
+    box-shadow: 0 8px 24px -4px rgba(51,48,42,0.28);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    white-space: nowrap;
+    max-width: calc(100vw - 32px);
+}
+#annapurnaToast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+    pointer-events: auto;
+}
+@media (min-width: 768px) {
+    #annapurnaToast { bottom: 32px; }
+}
+
+/* ── Delete confirm modal ─────────────────────────────────── */
+#deleteConfirmModal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9100;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+}
+#deleteConfirmModal.open {
+    display: flex;
+}
+#deleteConfirmOverlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(30, 27, 22, 0.5);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    animation: overlayIn 0.2s ease;
+}
+#deleteConfirmPanel {
+    position: relative;
+    z-index: 1;
+    background: #fff8f0;
+    border-radius: 1.5rem;
+    box-shadow: 0 24px 64px -8px rgba(112, 87, 64, 0.22);
+    width: 100%;
+    max-width: 360px;
+    animation: panelIn 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ── Pre-order Time Modal ─────────────────────────────────── */
+#preorderModal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9050;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+}
+#preorderModal.open {
+    display: flex;
+}
+#preorderModalOverlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(30, 27, 22, 0.55);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    animation: overlayIn 0.2s ease;
+}
+#preorderModalPanel {
+    position: relative;
+    z-index: 1;
+    background: #fff8f0;
+    border-radius: 1.5rem;
+    box-shadow: 0 24px 64px -8px rgba(112, 87, 64, 0.22), 0 8px 24px -4px rgba(112, 87, 64, 0.12);
+    width: 100%;
+    max-width: 420px;
+    max-height: calc(100dvh - 32px);
+    overflow-y: auto;
+    animation: panelIn 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+#preorderModalPanel:focus { outline: none; }
+
+/* Time input styled to match .modal-input */
+.time-input-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.time-block {
+    flex: 1;
+}
+.time-block label {
+    display: block;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1e1b16;
+    margin-bottom: 6px;
+    letter-spacing: 0.01em;
+}
+input[type="time"].modal-input {
+    cursor: pointer;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #9f3d00;
+    text-align: center;
+    letter-spacing: 0.03em;
+}
+input[type="time"].modal-input::-webkit-calendar-picker-indicator {
+    filter: invert(30%) sepia(80%) saturate(600%) hue-rotate(10deg);
+    cursor: pointer;
+    opacity: 0.7;
+}
+.time-separator {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #594238;
+    margin-top: 22px;
+    flex-shrink: 0;
+}
+</style>
+</head>
+<body class="antialiased min-h-screen relative pb-xl md:pb-0 overflow-x-hidden">
+<!-- Mobile Drawer Overlay -->
+<div class="fixed inset-0 bg-inverse-surface/40 z-40 md:hidden" id="drawer-overlay" onclick="toggleDrawer()"></div>
+<!-- Navigation Drawer (SideNav from JSON) -->
+<aside class="fixed top-0 left-0 z-50 bg-surface-container-low text-secondary font-body-md h-full w-80 rounded-r-xl shadow-xl flex flex-col py-md md:static md:h-screen md:w-64 md:translate-x-0 md:rounded-none md:shadow-none md:border-r md:border-surface-variant md:flex-shrink-0 md:float-left md:sticky" id="mobile-nav-drawer">
+<div class="px-md pb-md border-b border-surface-variant mb-4 flex items-center justify-between md:hidden">
+<span class="font-headline-lg-mobile text-primary">Annapurna</span>
+<button class="text-on-surface-variant p-2 rounded-full hover:bg-surface-variant/50" onclick="toggleDrawer()">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+</div>
+<div class="px-md mb-md flex items-center gap-sm">
+<img alt="Annapurna Home Chef" class="w-12 h-12 rounded-full object-cover shadow-sm" data-alt="A warm, brightly lit portrait of a verified home chef wearing a clean terracotta apron, smiling authentically in a sunlit kitchen. Natural lighting, soft background blur, modern rustic aesthetic. The mood is welcoming and professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAS6-ndVnu210mhG2qxCl6Ndd4yvkjE6gPHoGpTkklplcInhZ4tF4f86WLWYO7XTA1XX79eGo77Ecvo3vevrxkWZIUDEf5JClI0FoTGs23pgkoxHb5Cnc1EjVcY981GUm4-RRSe4e8qJFA2Rxg4NlpBJprq7bKhYX_uBPYL1RKOApCDC6DumN95HfuAPjg4as-F3VIMbIOBkzz_1kBK-zYV4i0aYf78JfhDeNkgDTpH23YIMTuVUvzYVQ"/>
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface text-lg">Asha Sharma</h2>
+<p class="font-label-sm text-label-sm text-primary">Verified Home Cook</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant text-[10px]">Member since 2023</p>
+</div>
+</div>
+<nav class="flex-1 overflow-y-auto">
+<ul class="flex flex-col gap-1">
+<!-- Kitchen / Home (Active mapping) -->
+<li>
+<a class="flex items-center gap-3 bg-secondary-container text-on-secondary-container rounded-full mx-2 px-4 py-3 font-bold transition-all duration-300 ease-in-out hover:bg-surface-variant" href="#">
+<span class="material-symbols-outlined" data-icon="restaurant">restaurant</span>
+                        My Kitchen
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 text-on-surface-variant mx-2 px-4 py-3 transition-all duration-300 ease-in-out hover:bg-surface-variant rounded-full" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+                        Earnings
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 text-on-surface-variant mx-2 px-4 py-3 transition-all duration-300 ease-in-out hover:bg-surface-variant rounded-full" href="#">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+                        Community Hub
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 text-on-surface-variant mx-2 px-4 py-3 transition-all duration-300 ease-in-out hover:bg-surface-variant rounded-full" href="#">
+<span class="material-symbols-outlined" data-icon="verified">verified</span>
+                        Safety Standards
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 text-on-surface-variant mx-2 px-4 py-3 transition-all duration-300 ease-in-out hover:bg-surface-variant rounded-full" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+                        Help Center
+                    </a>
+</li>
+</ul>
+</nav>
+<div class="mt-auto px-2 pt-4">
+<a class="flex items-center gap-3 text-on-surface-variant mx-2 px-4 py-3 transition-all duration-300 ease-in-out hover:bg-surface-variant rounded-full" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+                Logout
+            </a>
+</div>
+</aside>
+<!-- Main Content Wrapper -->
+<div class="md:ml-64 flex-1 flex flex-col min-h-screen">
+<!-- TopAppBar (Web & Mobile Header) -->
+<header class="w-full top-0 sticky z-30 bg-surface shadow-sm md:hidden flex items-center justify-between px-margin-mobile py-sm transition-transform active:scale-95">
+<div class="flex items-center gap-sm">
+<button class="text-on-surface-variant hover:bg-surface-container-high transition-colors p-2 rounded-full flex items-center justify-center" onclick="toggleDrawer()">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<span class="font-headline-md text-headline-md font-bold text-primary">Annapurna</span>
+</div>
+<div class="flex items-center gap-sm">
+<button class="relative p-2 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-1 right-1 w-2.5 h-2.5 bg-error rounded-full border border-surface"></span>
+</button>
+</div>
+</header>
+<!-- Custom Top Banner (Hero Section) -->
+<div class="bg-primary rounded-b-[32px] pt-md pb-lg px-margin-mobile relative overflow-hidden shadow-ambient md:rounded-b-none md:pt-margin-desktop md:pb-margin-desktop md:px-margin-desktop">
+<!-- Decorative soft background pattern -->
+<div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 20px 20px, #ffffff 2px, transparent 0); background-size: 40px 40px;"></div>
+<div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-md max-w-6xl mx-auto">
+<!-- Profile & Greeting -->
+<div class="flex items-start gap-4">
+<img alt="Anita Kitchen" class="w-16 h-16 rounded-full border-2 border-on-primary object-cover shadow-sm" data-alt="A warm, brightly lit portrait of a verified home chef wearing a clean terracotta apron, smiling authentically in a sunlit kitchen. Natural lighting, soft background blur, modern rustic aesthetic. The mood is welcoming and professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBW0oRgvhJBmKczzqfpyjNTsrOZdK9QEm59kkWLuXSbwqI3M7eStlSUPfe0jxxb1eYyenR26-dBD3mj65OWoViR8SzhauIj-JUXB5MBvrbQZnVVtB0vubFGLoX00TlHj8r4qtFy8vQy6wKEsjpGvNbSHoZqHIMJr5pOjQa0vo37cvSjf1HvBNh7F-zM6OgFagQ9dJcBQqzHLAhsCEOXeybnhceLuZc_I7GTkLeDlOYNFlSM_6LASRzIXA"/>
+<div>
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-on-primary">Hello, Anita Kitchen 👋</h1>
+<p class="font-body-md text-on-primary/90 mt-1">Welcome back! 🌱</p>
+<div class="mt-3 inline-flex items-center gap-1 bg-inverse-surface/20 backdrop-blur-sm text-on-primary px-3 py-1 rounded-full font-label-sm">
+<span class="material-symbols-outlined text-[14px]" data-icon="storefront">storefront</span>
+                            🏪 Seller
+                        </div>
+</div>
+</div>
+<!-- Floating Status Card -->
+<div class="bg-surface rounded-card p-4 shadow-ambient flex items-center gap-4 self-start md:self-center w-full md:w-auto">
+<div class="bg-secondary-container text-on-secondary-container p-3 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="schedule">schedule</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 bg-secondary rounded-full"></span>
+<span class="font-label-md text-on-surface">Pre-order Active</span>
+</div>
+<p class="font-body-md text-on-surface-variant text-sm mt-1 preorder-time-text">6:00 AM – 10:00 AM</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Dashboard Canvas -->
+<main class="flex-1 px-margin-mobile py-md md:px-margin-desktop md:py-margin-desktop max-w-6xl mx-auto w-full">
+<!-- Today's Overview -->
+<section class="mb-lg">
+<div class="flex items-center justify-between mb-md">
+<h2 class="font-headline-md text-headline-md text-on-surface">Today's Overview</h2>
+
+<div class="relative">
+    <button id="dateRangeBtn" class="flex items-center gap-1 bg-surface-container-high px-3 py-1.5 rounded-full font-label-md text-on-surface hover:bg-surface-variant transition-colors">
+        <span id="dateRangeText">Today</span>
+        <span class="material-symbols-outlined text-[18px]" data-icon="arrow_drop_down">arrow_drop_down</span>
+    </button>
+    <div id="dateRangeMenu" class="absolute right-0 mt-2 w-36 bg-surface-container-lowest rounded-card shadow-ambient border border-surface-variant hidden z-50 overflow-hidden">
+        <button class="w-full text-left px-4 py-2 font-body-md text-on-surface hover:bg-surface-container transition-colors date-range-option" data-range="Today">Today</button>
+        <button class="w-full text-left px-4 py-2 font-body-md text-on-surface hover:bg-surface-container transition-colors date-range-option" data-range="This Week">This Week</button>
+        <button class="w-full text-left px-4 py-2 font-body-md text-on-surface hover:bg-surface-container transition-colors date-range-option" data-range="This Month">This Month</button>
+    </div>
+</div>
+
+</div>
+
+<div id="statsGrid" class="grid grid-cols-2 md:grid-cols-4 gap-4">
+    <!-- Stats will be rendered here -->
+</div>
+</section>
+
+<!-- Quick Actions (Bento-style horizontal scroll on mobile) -->
+<section class="mb-lg">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-md">Quick Actions</h2>
+<div class="flex overflow-x-auto gap-4 pb-4 -mx-margin-mobile px-margin-mobile md:mx-0 md:px-0 hide-scrollbar snap-x">
+<!-- Action: Add Menu -->
+<button onclick="addNewMenuItem()" class="snap-start flex-shrink-0 flex flex-col items-center gap-2 group w-[72px]">
+<div class="w-14 h-14 bg-surface-container rounded-2xl flex items-center justify-center text-primary group-hover:bg-primary-container group-hover:text-on-primary-container transition-colors shadow-sm">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+</div>
+<span class="font-label-sm text-on-surface-variant text-center whitespace-normal leading-tight">Add Menu</span>
+</button>
+<!-- Action: Manage Menu -->
+<button onclick="document.getElementById('myMenuSection').scrollIntoView({behavior: 'smooth'})" class="snap-start flex-shrink-0 flex flex-col items-center gap-2 group w-[72px]">
+<div class="w-14 h-14 bg-surface-container rounded-2xl flex items-center justify-center text-tertiary group-hover:bg-tertiary-container group-hover:text-on-tertiary-container transition-colors shadow-sm">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+</div>
+<span class="font-label-sm text-on-surface-variant text-center whitespace-normal leading-tight">Manage Menu</span>
+</button>
+<!-- Action: Orders -->
+<button class="snap-start flex-shrink-0 flex flex-col items-center gap-2 group w-[72px]">
+<div class="w-14 h-14 bg-surface-container rounded-2xl flex items-center justify-center text-[#0369a1] group-hover:bg-[#bae6fd] transition-colors shadow-sm">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+</div>
+<span class="font-label-sm text-on-surface-variant text-center whitespace-normal leading-tight">Orders</span>
+</button>
+<!-- Action: Pre-order Time -->
+<button onclick="window.changePreorderTime()" class="snap-start flex-shrink-0 flex flex-col items-center gap-2 group w-[72px]">
+<div class="w-14 h-14 bg-surface-container rounded-2xl flex items-center justify-center text-secondary group-hover:bg-secondary-container group-hover:text-on-secondary-container transition-colors shadow-sm">
+<span class="material-symbols-outlined" data-icon="update">update</span>
+</div>
+<span class="font-label-sm text-on-surface-variant text-center whitespace-normal leading-tight">Pre-order Time</span>
+</button>
+<!-- Action: Profile -->
+<button class="snap-start flex-shrink-0 flex flex-col items-center gap-2 group w-[72px]">
+<div class="w-14 h-14 bg-surface-container rounded-2xl flex items-center justify-center text-on-surface group-hover:bg-surface-variant transition-colors shadow-sm">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</div>
+<span class="font-label-sm text-on-surface-variant text-center whitespace-normal leading-tight">Profile</span>
+</button>
+</div>
+</section>
+<!-- Featured Card (Glassmorphism / Organic) -->
+<section class="mb-lg">
+<div class="relative bg-surface-container-low rounded-card p-6 md:p-8 shadow-ambient overflow-hidden border border-surface-variant">
+<!-- Abstract clay shapes in background (SVG Placeholder) -->
+
+<div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+<div class="flex-1">
+<div class="inline-flex items-center gap-2 bg-primary-container/10 text-primary px-3 py-1 rounded-full mb-3">
+<span class="material-symbols-outlined text-[16px]" data-icon="event_available">event_available</span>
+<span class="font-label-sm">Active Schedule</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-1">Pre-order Time</h3>
+<p class="font-body-md text-on-surface-variant mb-4">You are accepting pre-orders for today's lunch menu.</p>
+<p class="font-headline-lg-mobile md:font-headline-lg text-primary mb-6 preorder-time-text">6:00 AM – 10:00 AM</p>
+<button id="manageTimeBtn" onclick="window.changePreorderTime()" class="px-6 py-2 border-2 border-primary text-primary rounded-full font-label-md hover:bg-primary/5 transition-colors">
+                                Manage Time
+                            </button>
+</div>
+<div class="hidden md:block w-40 h-40 bg-surface-variant rounded-full relative overflow-hidden flex-shrink-0">
+<img alt="Clay pot illustration" class="w-full h-full object-cover" data-alt="A beautifully crafted, modern terracotta cooking pot resting on a wooden kitchen counter. The pot is styled with minimal rustic charm, illuminated by soft morning sunlight that creates gentle, warm ambient shadows on a clean off-white background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-OMnvhLI8bmF3AenrXlU4bhbePTxog2-EhfOltScbphB7YTcB2eBVBeTcJk5DE4nWVxGJh23Mx-LTr9S_p0S2CPhfKVR1xHtZ1TFYjMh1AzDZij-9gl7sCrh5XyDS5ef_0MYCBuB_TuGV9RDWQbkbaAqT4LcTiCQ12sH4FBR8oOtjU8WM0Yec_NgP4eWFEa1jeMnE79i52jvcWu92tIKrw2nHXgD5H52MNYx5HpBNAfiBAaYce4-fPw"/>
+</div>
+</div>
+</div>
+</section>
+
+<!-- My Menu Section -->
+<section class="mb-lg" id="myMenuSection">
+<div class="flex items-center justify-between mb-md">
+<h2 class="font-headline-md text-headline-md text-on-surface">My Active Menu</h2>
+<button class="font-label-md text-primary hover:bg-primary/10 px-3 py-1.5 rounded-full transition-colors flex items-center gap-1" onclick="addNewMenuItem()">
+    <span class="material-symbols-outlined text-[18px]">add</span> Add Item
+</button>
+</div>
+<div id="myMenuList" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <!-- Menu items will be rendered here -->
+</div>
+</section>
+
+<!-- Recent Orders -->
+<section class="mb-lg">
+<div class="flex items-center justify-between mb-md">
+<h2 class="font-headline-md text-headline-md text-on-surface">Recent Orders</h2>
+<a id="viewAllOrders" class="font-label-md text-primary hover:underline cursor-pointer">View All</a>
+</div>
+
+<div id="recentOrdersList" class="flex flex-col gap-3">
+    <!-- Orders will be rendered here -->
+</div>
+</section>
+
+</main>
+</div>
+<!-- BottomNavBar (Mobile Only - Destination Screen) -->
+<!-- Mapped dynamically from JSON structural commands: Home is visually active as 'Dashboard' based on prompt -->
+<nav class="bg-surface-container text-primary font-label-sm font-headline-md text-headline-md fixed bottom-0 w-full z-50 rounded-t-xl shadow-[0_-4px_24px_rgba(51,48,42,0.06)] fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-4 pt-2 md:hidden block">
+<!-- Dashboard (Maps to Home in JSON concept) -->
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 hover:bg-surface-variant/50 transition-all active:scale-90 duration-200 group" href="#">
+<span class="material-symbols-outlined" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="mt-1 text-[10px]">Dashboard</span>
+</a>
+<!-- Orders -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/50 transition-all active:scale-90 duration-200 group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors" data-icon="receipt_long">receipt_long</span>
+<span class="mt-1 text-[10px] group-hover:text-primary transition-colors">Orders</span>
+</a>
+<!-- Menu (Maps to Cart/Products concept) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/50 transition-all active:scale-90 duration-200 group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors" data-icon="restaurant_menu">restaurant_menu</span>
+<span class="mt-1 text-[10px] group-hover:text-primary transition-colors">Menu</span>
+</a>
+<!-- Profile (Account from JSON) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/50 transition-all active:scale-90 duration-200 group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors" data-icon="person">person</span>
+<span class="mt-1 text-[10px] group-hover:text-primary transition-colors">Profile</span>
+</a>
+</nav>
+
+<!-- ══════════ Add Menu Modal ══════════ -->
+<div id="addMenuModal" role="dialog" aria-modal="true" aria-labelledby="addMenuModalTitle">
+    <div id="addMenuModalOverlay"></div>
+    <div id="addMenuModalPanel" tabindex="-1">
+        <!-- Header -->
+        <div class="flex items-center justify-between px-6 pt-6 pb-4 border-b border-surface-variant">
+            <div>
+                <h2 id="addMenuModalTitle" class="font-headline-md text-headline-md text-on-surface" style="font-family:'DM Sans',sans-serif;">Add Menu Item</h2>
+                <p class="font-label-sm text-on-surface-variant mt-0.5">Fill in the details for your new dish</p>
+            </div>
+            <button id="addMenuModalClose" aria-label="Close dialog" class="w-9 h-9 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors">
+                <span class="material-symbols-outlined text-[20px]">close</span>
+            </button>
+        </div>
+
+        <!-- Form -->
+        <form id="addMenuForm" novalidate class="px-6 py-5 flex flex-col gap-5">
+            <!-- Name -->
+            <div>
+                <label for="menuItemName" class="block font-label-md text-on-surface mb-1.5">
+                    Item Name <span class="text-error" aria-hidden="true">*</span>
+                </label>
+                <input id="menuItemName" type="text" class="modal-input" placeholder="e.g. Dal Makhani" autocomplete="off" maxlength="80" />
+                <p id="menuItemNameError" class="modal-field-error" role="alert">Please enter an item name.</p>
+            </div>
+
+            <!-- Description -->
+            <div>
+                <label for="menuItemDesc" class="block font-label-md text-on-surface mb-1.5">Description</label>
+                <textarea id="menuItemDesc" class="modal-input" rows="2" placeholder="Short description (optional)" maxlength="200" style="resize:vertical;"></textarea>
+            </div>
+
+            <!-- Price -->
+            <div>
+                <label for="menuItemPrice" class="block font-label-md text-on-surface mb-1.5">
+                    Price (₹) <span class="text-error" aria-hidden="true">*</span>
+                </label>
+                <input id="menuItemPrice" type="number" min="1" step="1" class="modal-input" placeholder="e.g. 120" />
+                <p id="menuItemPriceError" class="modal-field-error" role="alert">Please enter a valid positive price.</p>
+            </div>
+
+            <!-- Category -->
+            <div>
+                <label for="menuItemCategory" class="block font-label-md text-on-surface mb-1.5">Category</label>
+                <select id="menuItemCategory" class="modal-input">
+                    <option value="veg">🥗 Veg</option>
+                    <option value="nonveg">🍗 Non-Veg</option>
+                    <option value="vegan">🌿 Vegan</option>
+                    <option value="dessert">🍮 Dessert</option>
+                    <option value="beverage">☕ Beverage</option>
+                    <option value="snack">🥪 Snack</option>
+                </select>
+            </div>
+
+            <!-- Footer Buttons -->
+            <div class="flex gap-3 pt-1">
+                <button type="button" id="addMenuCancelBtn" class="flex-1 py-3 rounded-full border-2 border-primary text-primary font-label-md hover:bg-primary/5 transition-colors">
+                    Cancel
+                </button>
+                <button type="submit" id="addMenuSubmitBtn" class="flex-1 py-3 rounded-full bg-primary text-on-primary font-label-md hover:bg-primary/90 active:scale-95 transition-all flex items-center justify-center gap-2">
+                    <span class="material-symbols-outlined text-[18px]">add_circle</span>
+                    Add Menu Item
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- ══════════ Pre-order Time Modal ══════════ -->
+<div id="preorderModal" role="dialog" aria-modal="true" aria-labelledby="preorderModalTitle">
+    <div id="preorderModalOverlay"></div>
+    <div id="preorderModalPanel" tabindex="-1">
+        <!-- Header -->
+        <div class="flex items-center justify-between px-6 pt-6 pb-4 border-b border-surface-variant">
+            <div>
+                <h2 id="preorderModalTitle" class="font-headline-md text-headline-md text-on-surface" style="font-family:'DM Sans',sans-serif;">Pre-order Time</h2>
+                <p class="font-label-sm text-on-surface-variant mt-0.5">Set the window when customers can place orders</p>
+            </div>
+            <button id="preorderModalClose" aria-label="Close dialog" class="w-9 h-9 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors">
+                <span class="material-symbols-outlined text-[20px]">close</span>
+            </button>
+        </div>
+
+        <!-- Form -->
+        <form id="preorderForm" novalidate class="px-6 py-5 flex flex-col gap-5">
+
+            <!-- Time range preview chip -->
+            <div class="flex items-center gap-2 bg-secondary-container/40 text-on-secondary-container px-4 py-2 rounded-full w-fit">
+                <span class="material-symbols-outlined text-[16px]">schedule</span>
+                <span id="preorderPreviewText" class="font-label-md text-[13px]">—</span>
+            </div>
+
+            <!-- Start / End time pickers -->
+            <div class="time-input-row">
+                <div class="time-block">
+                    <label for="preorderStartTime">Opens at</label>
+                    <input id="preorderStartTime" type="time" class="modal-input" />
+                </div>
+                <div class="time-separator">–</div>
+                <div class="time-block">
+                    <label for="preorderEndTime">Closes at</label>
+                    <input id="preorderEndTime" type="time" class="modal-input" />
+                </div>
+            </div>
+
+            <!-- Inline validation error -->
+            <p id="preorderTimeError" class="modal-field-error" role="alert"></p>
+
+            <!-- Footer buttons -->
+            <div class="flex gap-3 pt-1">
+                <button type="button" id="preorderCancelBtn" class="flex-1 py-3 rounded-full border-2 border-primary text-primary font-label-md hover:bg-primary/5 transition-colors">
+                    Cancel
+                </button>
+                <button type="submit" id="preorderSaveBtn" class="flex-1 py-3 rounded-full bg-primary text-on-primary font-label-md hover:bg-primary/90 active:scale-95 transition-all flex items-center justify-center gap-2">
+                    <span class="material-symbols-outlined text-[18px]">save</span>
+                    Save
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- ══════════ Delete Confirm Modal ══════════ -->
+<div id="deleteConfirmModal" role="dialog" aria-modal="true" aria-labelledby="deleteConfirmTitle">
+    <div id="deleteConfirmOverlay"></div>
+    <div id="deleteConfirmPanel" class="p-6" tabindex="-1">
+        <div class="flex items-start gap-4 mb-5">
+            <div class="w-10 h-10 rounded-full bg-error-container flex items-center justify-center flex-shrink-0">
+                <span class="material-symbols-outlined text-[20px] text-error">delete</span>
+            </div>
+            <div>
+                <h2 id="deleteConfirmTitle" class="font-label-md text-on-surface" style="font-family:'DM Sans',sans-serif;font-size:18px;line-height:24px;">Remove Item?</h2>
+                <p id="deleteConfirmMsg" class="font-body-md text-sm text-on-surface-variant mt-1">This item will be permanently removed from your menu.</p>
+            </div>
+        </div>
+        <div class="flex gap-3">
+            <button id="deleteConfirmCancel" class="flex-1 py-2.5 rounded-full border-2 border-surface-variant text-on-surface-variant font-label-md hover:bg-surface-container-high transition-colors">
+                Keep It
+            </button>
+            <button id="deleteConfirmOk" class="flex-1 py-2.5 rounded-full bg-error text-on-error font-label-md hover:bg-error/90 transition-colors">
+                Remove
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- ══════════ Toast ══════════ -->
+<div id="annapurnaToast" role="status" aria-live="polite">
+    <span class="material-symbols-outlined text-[18px]" id="toastIcon">check_circle</span>
+    <span id="toastMsg"></span>
+</div>
+
+
+<script>
+// MOCK DATA
+const MOCK_STATS = {
+    'Today': [
+        { title: 'Total Orders', value: '18', icon: 'shopping_bag', color: 'primary' },
+        { title: 'Confirmed', value: '12', icon: 'task', color: 'blue' },
+        { title: 'Preparing', value: '4', icon: 'restaurant_menu', color: 'secondary' },
+        { title: 'Earnings Today', value: '₹2,450', icon: 'currency_rupee', color: 'purple' }
+    ],
+    'This Week': [
+        { title: 'Total Orders', value: '124', icon: 'shopping_bag', color: 'primary' },
+        { title: 'Confirmed', value: '120', icon: 'task', color: 'blue' },
+        { title: 'Preparing', value: '-', icon: 'restaurant_menu', color: 'secondary' },
+        { title: 'Earnings Week', value: '₹15,200', icon: 'currency_rupee', color: 'purple' }
+    ],
+    'This Month': [
+        { title: 'Total Orders', value: '530', icon: 'shopping_bag', color: 'primary' },
+        { title: 'Confirmed', value: '515', icon: 'task', color: 'blue' },
+        { title: 'Preparing', value: '-', icon: 'restaurant_menu', color: 'secondary' },
+        { title: 'Earnings Month', value: '₹62,800', icon: 'currency_rupee', color: 'purple' }
+    ]
+};
+
+const MOCK_RECENT_ORDERS = [
+    {
+        id: '1234',
+        name: 'Ananya Sharma',
+        initials: 'AS',
+        itemsCount: 3,
+        total: '₹600',
+        status: 'Confirmed',
+        time: '10:30 AM',
+        statusColor: 'bg-[#dcfce7] text-[#166534]'
+    },
+    {
+        id: '1235',
+        name: 'Rahul Gupta',
+        initials: 'RG',
+        itemsCount: 2,
+        total: '₹280',
+        status: 'Preparing',
+        time: '10:45 AM',
+        statusColor: 'bg-[#ffedd5] text-[#9a3412]'
+    },
+    {
+        id: '1236',
+        name: 'Priya Singh',
+        initials: 'PS',
+        itemsCount: 1,
+        total: '₹150',
+        status: 'Pending',
+        time: '11:00 AM',
+        statusColor: 'bg-[#e0f2fe] text-[#0369a1]'
+    }
+];
+
+// Simple drawer toggle logic for mobile (from existing code)
+function toggleDrawer() {
+    const drawer = document.getElementById('mobile-nav-drawer');
+    const overlay = document.getElementById('drawer-overlay');
+    drawer.classList.toggle('open');
+    overlay.classList.toggle('open');
+}
+
+// DOM ELEMENTS
+const statsGrid = document.getElementById('statsGrid');
+const recentOrdersList = document.getElementById('recentOrdersList');
+const dateRangeBtn = document.getElementById('dateRangeBtn');
+const dateRangeText = document.getElementById('dateRangeText');
+const dateRangeMenu = document.getElementById('dateRangeMenu');
+const manageTimeBtn = document.getElementById('manageTimeBtn');
+const viewAllOrders = document.getElementById('viewAllOrders');
+
+// INITIALIZATION
+function init() {
+    renderStats('Today');
+    renderRecentOrders();
+    setupEventListeners();
+    
+    // Load persisted pre-order time
+    const storedTime = localStorage.getItem('seller_preorder_time');
+    if (storedTime) {
+        document.querySelectorAll('.preorder-time-text').forEach(el => el.textContent = storedTime);
+    }
+}
+
+// RENDERERS
+function renderStats(range) {
+    const stats = MOCK_STATS[range];
+    statsGrid.innerHTML = stats.map(stat => {
+        let colors = '';
+        if (stat.color === 'primary') {
+            colors = 'bg-primary-container/10 border-primary-container/20 text-primary bg-primary-container/20';
+        } else if (stat.color === 'blue') {
+            colors = 'bg-[#e0f2fe] border-[#bae6fd] text-[#0369a1] bg-[#bae6fd]/50';
+        } else if (stat.color === 'secondary') {
+            colors = 'bg-secondary-container/30 border-secondary-container/50 text-on-secondary-container bg-secondary-container';
+        } else if (stat.color === 'purple') {
+            colors = 'bg-[#f3e8ff] border-[#e9d5ff] text-[#7e22ce] bg-[#e9d5ff]/70';
+        }
+        
+        const [bgClass, borderClass, textClass, iconBgClass] = colors.split(' ');
+
+        return `
+        <div class="${bgClass} p-4 rounded-card border ${borderClass} flex flex-col items-start gap-3">
+            <div class="w-10 h-10 rounded-full ${iconBgClass} ${textClass} flex items-center justify-center">
+                <span class="material-symbols-outlined" data-icon="${stat.icon}">${stat.icon}</span>
+            </div>
+            <div>
+                <p class="font-headline-lg-mobile text-on-surface">${stat.value}</p>
+                <p class="font-label-sm text-on-surface-variant">${stat.title}</p>
+            </div>
+        </div>
+        `;
+    }).join('');
+}
+
+function renderRecentOrders() {
+    recentOrdersList.innerHTML = MOCK_RECENT_ORDERS.map(order => `
+    <div class="bg-surface-container-lowest p-4 rounded-card shadow-sm border border-surface-variant flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:shadow-md transition-shadow cursor-pointer group order-row" data-id="${order.id}">
+        <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant flex-shrink-0">
+                <span class="font-label-md">${order.initials}</span>
+            </div>
+            <div>
+                <div class="flex items-center gap-2 mb-1">
+                    <h4 class="font-label-md text-on-surface">${order.name}</h4>
+                    <span class="text-on-surface-variant font-label-sm">#${order.id}</span>
+                </div>
+                <p class="font-body-md text-sm text-on-surface-variant">${order.itemsCount} Items · <span class="font-semibold text-on-surface">${order.total}</span></p>
+            </div>
+        </div>
+        <div class="flex items-center justify-between sm:justify-end gap-4 w-full sm:w-auto">
+            <div class="flex flex-col items-start sm:items-end gap-1">
+                <span class="${order.statusColor} px-2.5 py-1 rounded-full font-label-sm">${order.status}</span>
+                <span class="font-label-sm text-on-surface-variant">${order.time}</span>
+            </div>
+            <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" data-icon="chevron_right">chevron_right</span>
+        </div>
+    </div>
+    `).join('');
+}
+
+// EVENT LISTENERS
+function setupEventListeners() {
+    // Dropdown toggle
+    if (dateRangeBtn) {
+        dateRangeBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            dateRangeMenu.classList.toggle('hidden');
+        });
+    }
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', () => {
+        if (dateRangeMenu && !dateRangeMenu.classList.contains('hidden')) {
+            dateRangeMenu.classList.add('hidden');
+        }
+    });
+
+    // Date range options
+    document.querySelectorAll('.date-range-option').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const range = e.target.getAttribute('data-range');
+            dateRangeText.textContent = range;
+            renderStats(range);
+        });
+    });
+
+    // Manage Time — open the custom pre-order modal
+    if (manageTimeBtn) {
+        manageTimeBtn.addEventListener('click', () => window.changePreorderTime());
+    }
+
+    // View All Orders
+    if (viewAllOrders) {
+        viewAllOrders.addEventListener('click', () => {
+            console.log('Navigating to full orders list...');
+        });
+    }
+
+    // Recent Order click
+    recentOrdersList.addEventListener('click', (e) => {
+        const row = e.target.closest('.order-row');
+        if (row) {
+            console.log(`Navigating to order details for ID: ${row.getAttribute('data-id')}`);
+        }
+    });
+
+    // Sidebar Navigation
+    document.querySelectorAll('#mobile-nav-drawer a').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const text = link.textContent.trim();
+            console.log(`Sidebar Navigation: ${text}`);
+
+            // Handle Logout
+            if (text.toLowerCase().includes('logout')) {
+                if (confirm('Are you sure you want to logout?')) {
+                    // Clear session data
+                    localStorage.removeItem('userRole');
+                    localStorage.removeItem('annapurna_current_user');
+                    localStorage.removeItem('annapurna_cart');
+                    // Redirect to login
+                    window.location.href = '../login_screen/code.html';
+                }
+                return;
+            }
+
+            // For other links – show feedback
+            const navAlerts = {
+                'my kitchen': 'My Kitchen page – manage your profile and menu.',
+                'earnings': 'Earnings page – view your revenue reports.',
+                'community hub': 'Community Hub – connect with other home chefs.',
+                'safety standards': 'Safety Standards – FSSAI & hygiene guidelines.',
+                'help center': 'Help Center – FAQs and support tickets.'
+            };
+            const key = text.toLowerCase();
+            const msg = Object.keys(navAlerts).find(k => key.includes(k));
+            if (msg) alert(navAlerts[msg]);
+        });
+    });
+
+    // Bottom Navigation
+    document.querySelectorAll('nav.fixed.bottom-0 a').forEach((link, idx, all) => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const text = link.textContent.trim();
+            console.log(`Bottom Navigation: ${text}`);
+            // Visual active state toggle
+            all.forEach(l => {
+                l.classList.remove('bg-primary-container', 'text-on-primary-container');
+                l.classList.add('text-on-surface-variant');
+            });
+            link.classList.add('bg-primary-container', 'text-on-primary-container');
+            link.classList.remove('text-on-surface-variant');
+        });
+    });
+
+    // Quick Actions
+    const quickActions = document.querySelectorAll('.snap-start');
+    quickActions.forEach(action => {
+        action.addEventListener('click', (e) => {
+            const text = action.querySelector('span.font-label-sm').textContent.trim();
+            console.log(`Quick Action: ${text}`);
+        });
+    });
+}
+
+// Start
+init();
+
+// ── Pre-order Time Modal ─────────────────────────────────────────────────────
+(function initPreorderModal() {
+    const modal       = document.getElementById('preorderModal');
+    const overlay     = document.getElementById('preorderModalOverlay');
+    const panel       = document.getElementById('preorderModalPanel');
+    const closeBtn    = document.getElementById('preorderModalClose');
+    const cancelBtn   = document.getElementById('preorderCancelBtn');
+    const form        = document.getElementById('preorderForm');
+    const startInput  = document.getElementById('preorderStartTime');
+    const endInput    = document.getElementById('preorderEndTime');
+    const errEl       = document.getElementById('preorderTimeError');
+    const previewEl   = document.getElementById('preorderPreviewText');
+
+    // Convert "HH:MM" (24-h) to "H:MM AM/PM"
+    function fmt24to12(val) {
+        if (!val) return '';
+        const [hStr, mStr] = val.split(':');
+        let h = parseInt(hStr, 10);
+        const m = mStr;
+        const ampm = h >= 12 ? 'PM' : 'AM';
+        h = h % 12 || 12;
+        return `${h}:${m} ${ampm}`;
+    }
+
+    // Parse stored "H:MM AM – H:MM PM" back to 24-h for <input type="time">
+    function parse12to24(str) {
+        const match = str.match(/(\d+):(\d+)\s*(AM|PM)/i);
+        if (!match) return '';
+        let h = parseInt(match[1], 10);
+        const m = match[2];
+        const ampm = match[3].toUpperCase();
+        if (ampm === 'PM' && h !== 12) h += 12;
+        if (ampm === 'AM' && h === 12) h = 0;
+        return `${String(h).padStart(2,'0')}:${m}`;
+    }
+
+    function updatePreview() {
+        const s = startInput.value, e = endInput.value;
+        previewEl.textContent = (s && e)
+            ? `${fmt24to12(s)} – ${fmt24to12(e)}`
+            : '—';
+    }
+
+    function getFocusable() {
+        return Array.from(panel.querySelectorAll(
+            'button, input, [tabindex]:not([tabindex="-1"])'
+        )).filter(el => !el.disabled && el.offsetParent !== null);
+    }
+
+    function trapFocus(e) {
+        if (e.key !== 'Tab') return;
+        const els = getFocusable();
+        const first = els[0], last = els[els.length - 1];
+        if (e.shiftKey) {
+            if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+        } else {
+            if (document.activeElement === last)  { e.preventDefault(); first.focus(); }
+        }
+    }
+
+    function handleKeyDown(e) {
+        if (e.key === 'Escape') { closeModal(); return; }
+        trapFocus(e);
+    }
+
+    function openModal() {
+        // Pre-populate from stored value
+        const stored = localStorage.getItem('seller_preorder_time') || '6:00 AM – 10:00 AM';
+        // Try to split on em-dash or en-dash
+        const parts = stored.split(/\s*[–—-]\s*/);
+        if (parts.length === 2) {
+            startInput.value = parse12to24(parts[0].trim()) || '06:00';
+            endInput.value   = parse12to24(parts[1].trim()) || '10:00';
+        } else {
+            startInput.value = '06:00';
+            endInput.value   = '10:00';
+        }
+        clearError();
+        updatePreview();
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        requestAnimationFrame(() => startInput.focus());
+        document.addEventListener('keydown', handleKeyDown);
+    }
+
+    function closeModal() {
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
+        document.removeEventListener('keydown', handleKeyDown);
+    }
+
+    function clearError() {
+        errEl.textContent = '';
+        errEl.classList.remove('visible');
+        startInput.classList.remove('invalid');
+        endInput.classList.remove('invalid');
+    }
+
+    function validate() {
+        clearError();
+        const s = startInput.value, e = endInput.value;
+        if (!s || !e) {
+            errEl.textContent = 'Both start and end times are required.';
+            errEl.classList.add('visible');
+            if (!s) startInput.classList.add('invalid');
+            if (!e) endInput.classList.add('invalid');
+            (!s ? startInput : endInput).focus();
+            return false;
+        }
+        if (e <= s) {
+            errEl.textContent = 'Closing time must be after opening time.';
+            errEl.classList.add('visible');
+            endInput.classList.add('invalid');
+            endInput.focus();
+            return false;
+        }
+        return true;
+    }
+
+    // Live preview as user changes time
+    startInput.addEventListener('input', updatePreview);
+    endInput.addEventListener('input', updatePreview);
+
+    overlay.addEventListener('click', closeModal);
+    closeBtn.addEventListener('click', closeModal);
+    cancelBtn.addEventListener('click', closeModal);
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (!validate()) return;
+
+        const label = `${fmt24to12(startInput.value)} – ${fmt24to12(endInput.value)}`;
+        // Same storage key as before — data structure unchanged
+        localStorage.setItem('seller_preorder_time', label);
+        document.querySelectorAll('.preorder-time-text').forEach(el => el.textContent = label);
+        closeModal();
+        showToast(`Pre-order time set to ${label}`, 'schedule');
+    });
+
+    // Expose globally so onclick="window.changePreorderTime()" keeps working
+    window.changePreorderTime = openModal;
+})();
+
+
+// MY MENU LOGIC
+let myMenuItems = JSON.parse(localStorage.getItem('seller_menu_items')) || [
+    { id: 1, name: "Dal Fry", price: "80", status: "Available", type: "veg" },
+    { id: 2, name: "Paneer Butter Masala", price: "150", status: "Available", type: "veg" },
+    { id: 3, name: "Chicken Curry", price: "200", status: "Sold Out", type: "nonveg" }
+];
+
+function saveMenu() {
+    localStorage.setItem('seller_menu_items', JSON.stringify(myMenuItems));
+}
+
+function renderMyMenu() {
+    const list = document.getElementById("myMenuList");
+    if(!list) return;
+    
+    list.innerHTML = myMenuItems.map(item => `
+        <div class="bg-surface-container-low border border-surface-variant rounded-xl p-4 flex items-center justify-between shadow-sm">
+            <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center flex-shrink-0 text-on-surface-variant">
+                    <span class="material-symbols-outlined text-[24px]">restaurant_menu</span>
+                </div>
+                <div>
+                    <h4 class="font-label-md text-on-surface">${item.name}</h4>
+                    <p class="font-label-sm text-primary">₹${item.price}</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-3">
+                <span class="px-2 py-1 rounded text-[10px] font-bold ${item.status === 'Available' ? 'bg-secondary-container text-on-secondary-container' : 'bg-surface-variant text-on-surface-variant'}">${item.status}</span>
+                <button class="text-on-surface-variant hover:text-error transition-colors" onclick="removeMenuItem(${item.id})">
+                    <span class="material-symbols-outlined text-[18px]">delete</span>
+                </button>
+            </div>
+        </div>
+    `).join('');
+}
+
+// ── Toast helper ──────────────────────────────────────────────────────────────
+function showToast(message, icon = 'check_circle') {
+    const toast = document.getElementById('annapurnaToast');
+    document.getElementById('toastMsg').textContent = message;
+    document.getElementById('toastIcon').textContent = icon;
+    toast.classList.add('show');
+    clearTimeout(toast._hideTimer);
+    toast._hideTimer = setTimeout(() => toast.classList.remove('show'), 3200);
+}
+
+// ── Add Menu Modal ─────────────────────────────────────────────────────────────
+(function initAddMenuModal() {
+    const modal      = document.getElementById('addMenuModal');
+    const overlay    = document.getElementById('addMenuModalOverlay');
+    const panel      = document.getElementById('addMenuModalPanel');
+    const closeBtn   = document.getElementById('addMenuModalClose');
+    const cancelBtn  = document.getElementById('addMenuCancelBtn');
+    const form       = document.getElementById('addMenuForm');
+
+    const nameInput  = document.getElementById('menuItemName');
+    const nameErr    = document.getElementById('menuItemNameError');
+    const priceInput = document.getElementById('menuItemPrice');
+    const priceErr   = document.getElementById('menuItemPriceError');
+    const descInput  = document.getElementById('menuItemDesc');
+    const catSelect  = document.getElementById('menuItemCategory');
+
+    // Focus trap helpers
+    function getFocusable() {
+        return Array.from(panel.querySelectorAll(
+            'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        )).filter(el => !el.disabled && el.offsetParent !== null);
+    }
+
+    function trapFocus(e) {
+        if (e.key !== 'Tab') return;
+        const els = getFocusable();
+        const first = els[0], last = els[els.length - 1];
+        if (e.shiftKey) {
+            if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+        } else {
+            if (document.activeElement === last)  { e.preventDefault(); first.focus(); }
+        }
+    }
+
+    function openModal() {
+        form.reset();
+        clearErrors();
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        // Move focus into the panel
+        requestAnimationFrame(() => nameInput.focus());
+        document.addEventListener('keydown', handleKeyDown);
+    }
+
+    function closeModal() {
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
+        document.removeEventListener('keydown', handleKeyDown);
+    }
+
+    function handleKeyDown(e) {
+        if (e.key === 'Escape') { closeModal(); return; }
+        trapFocus(e);
+    }
+
+    function clearErrors() {
+        nameInput.classList.remove('invalid');
+        priceInput.classList.remove('invalid');
+        nameErr.classList.remove('visible');
+        priceErr.classList.remove('visible');
+    }
+
+    function validate() {
+        let ok = true;
+        clearErrors();
+
+        const nameVal = nameInput.value.trim();
+        if (!nameVal) {
+            nameInput.classList.add('invalid');
+            nameErr.textContent = 'Please enter an item name.';
+            nameErr.classList.add('visible');
+            ok = false;
+        }
+
+        const priceVal = parseFloat(priceInput.value);
+        if (!priceInput.value || isNaN(priceVal) || priceVal <= 0 || !Number.isFinite(priceVal)) {
+            priceInput.classList.add('invalid');
+            priceErr.textContent = 'Please enter a valid positive price.';
+            priceErr.classList.add('visible');
+            if (ok) priceInput.focus();
+            ok = false;
+        }
+
+        if (!ok && nameInput.classList.contains('invalid')) nameInput.focus();
+        return ok;
+    }
+
+    // Expose opener globally so button onclick="addNewMenuItem()" works
+    window.addNewMenuItem = openModal;
+
+    overlay.addEventListener('click', closeModal);
+    closeBtn.addEventListener('click', closeModal);
+    cancelBtn.addEventListener('click', closeModal);
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (!validate()) return;
+
+        const nameVal = nameInput.value.trim();
+        const priceRaw = parseFloat(priceInput.value);
+        const newItem = {
+            id: Date.now(),
+            name: nameVal,
+            price: String(Math.round(priceRaw * 100) / 100),
+            description: descInput.value.trim(),
+            status: 'Available',
+            type: catSelect.value
+        };
+
+        myMenuItems.unshift(newItem);
+        saveMenu();
+        renderMyMenu();
+        closeModal();
+        showToast(`"${nameVal}" added to your menu!`, 'check_circle');
+    });
+})();
+
+// ── Delete Confirm Modal ───────────────────────────────────────────────────────
+(function initDeleteModal() {
+    const modal     = document.getElementById('deleteConfirmModal');
+    const overlay   = document.getElementById('deleteConfirmOverlay');
+    const panel     = document.getElementById('deleteConfirmPanel');
+    const msgEl     = document.getElementById('deleteConfirmMsg');
+    const cancelBtn = document.getElementById('deleteConfirmCancel');
+    const okBtn     = document.getElementById('deleteConfirmOk');
+    let _resolve    = null;
+
+    function handleKeyDown(e) {
+        if (e.key === 'Escape') { closeModal(false); }
+        if (e.key === 'Tab') {
+            const els = Array.from(panel.querySelectorAll('button')).filter(el => !el.disabled);
+            const first = els[0], last = els[els.length - 1];
+            if (e.shiftKey) {
+                if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+            } else {
+                if (document.activeElement === last)  { e.preventDefault(); first.focus(); }
+            }
+        }
+    }
+
+    function openModal(itemName) {
+        msgEl.textContent = `"${itemName}" will be permanently removed from your menu.`;
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        requestAnimationFrame(() => cancelBtn.focus());
+        document.addEventListener('keydown', handleKeyDown);
+        return new Promise(res => { _resolve = res; });
+    }
+
+    function closeModal(result) {
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
+        document.removeEventListener('keydown', handleKeyDown);
+        if (_resolve) { _resolve(result); _resolve = null; }
+    }
+
+    overlay.addEventListener('click', () => closeModal(false));
+    cancelBtn.addEventListener('click', () => closeModal(false));
+    okBtn.addEventListener('click', () => closeModal(true));
+
+    window._confirmDelete = openModal;
+})();
+
+function removeMenuItem(id) {
+    const item = myMenuItems.find(i => i.id === id);
+    if (!item) return;
+    window._confirmDelete(item.name).then(confirmed => {
+        if (!confirmed) return;
+        myMenuItems = myMenuItems.filter(i => i.id !== id);
+        saveMenu();
+        renderMyMenu();
+        showToast(`"${item.name}" removed from your menu.`, 'delete');
+    });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    renderMyMenu();
+});
+
+</script>
+</body></html>
