@@ -1,0 +1,205 @@
+﻿<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Annapurna - Choose Your Role</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error": "#ba1a1a",
+                        "on-error": "#ffffff",
+                        "secondary": "#1b6d24",
+                        "tertiary-fixed-dim": "#e2c0a3",
+                        "surface-variant": "#e8e2d8",
+                        "surface-dim": "#e0d9d0",
+                        "outline": "#8c7166",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#59422c",
+                        "surface-container-highest": "#e8e2d8",
+                        "primary-fixed-dim": "#ffb596",
+                        "on-primary-fixed": "#360f00",
+                        "surface-bright": "#fff8f0",
+                        "on-background": "#1e1b16",
+                        "background": "#fff8f0",
+                        "secondary-container": "#a0f399",
+                        "on-primary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "surface-container": "#f4ede3",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#fffbff",
+                        "on-primary-fixed-variant": "#7c2e00",
+                        "on-secondary-container": "#217128",
+                        "secondary-fixed": "#a3f69c",
+                        "tertiary-container": "#8b6f56",
+                        "on-surface-variant": "#594238",
+                        "surface": "#fff8f0",
+                        "tertiary": "#705740",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-container": "#fffbff",
+                        "secondary-fixed-dim": "#88d982",
+                        "on-secondary-fixed": "#002204",
+                        "primary": "#9f3d00",
+                        "primary-container": "#c74e00",
+                        "inverse-primary": "#ffb596",
+                        "surface-container-low": "#faf3e9",
+                        "inverse-on-surface": "#f7f0e6",
+                        "on-surface": "#1e1b16",
+                        "inverse-surface": "#33302a",
+                        "on-secondary": "#ffffff",
+                        "outline-variant": "#e0c0b3",
+                        "tertiary-fixed": "#ffdcbe",
+                        "surface-container-high": "#eee7dd",
+                        "surface-tint": "#a33e00",
+                        "on-tertiary-fixed": "#291806",
+                        "primary-fixed": "#ffdbcd",
+                        "on-secondary-fixed-variant": "#005312"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px",
+                        "2xl": "1.5rem"
+                    },
+                    "spacing": {
+                        "md": "24px",
+                        "margin-mobile": "16px",
+                        "gutter": "20px",
+                        "lg": "48px",
+                        "margin-desktop": "64px",
+                        "base": "8px",
+                        "xl": "80px",
+                        "xs": "4px",
+                        "sm": "12px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["DM Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "headline-xl": ["DM Sans"],
+                        "headline-lg": ["DM Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["DM Sans"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background min-h-screen flex flex-col items-center justify-center py-12 px-4 sm:px-6 lg:px-8 overflow-x-hidden relative font-body-md text-on-background">
+
+<div class="w-full max-w-4xl mx-auto flex flex-col items-center">
+<!-- Header Section -->
+<div class="text-center mb-12 flex flex-col items-center">
+<img alt="Annapurna Logo" class="w-20 h-20 mb-4 object-contain drop-shadow-sm rounded-full" src="../assets/images/logo.png"/>
+<h1 class="font-headline-lg text-headline-lg text-primary mb-1">Annapurna</h1>
+<p class="font-label-md text-label-md text-outline uppercase tracking-wider">Pre-Ordered Food System</p>
+</div>
+<div class="text-center mb-10">
+<h2 class="font-headline-xl text-headline-xl text-on-surface mb-3">Choose Your Role</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Select how you want to continue</p>
+</div>
+<!-- Role Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full mb-16">
+<!-- Seller Card -->
+<div id="sellerCard" class="bg-[#FFF1E8] rounded-[24px] p-8 flex flex-col items-center text-center relative overflow-hidden group cursor-pointer transition-transform hover:-translate-y-1 hover:shadow-[0_16px_32px_-12px_rgba(159,61,0,0.15)] border border-primary/10">
+<div class="absolute top-6 right-6 w-12 h-12 bg-primary-container text-on-primary-container rounded-full flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined" data-icon="storefront" style="font-variation-settings: 'FILL' 1;">storefront</span>
+</div>
+<div class="w-48 h-48 mb-6 relative">
+<div class="absolute inset-0 bg-primary/10 rounded-full blur-xl transform group-hover:scale-110 transition-transform"></div>
+<img alt="Seller Illustration" class="w-full h-full object-cover rounded-full relative z-10 border-4 border-surface shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLSkkGtxotRvsHmGUdapaTFMwF2E-8ijYeI2jlpNXDWMMO7a7SX9FXbVxgruM1kYPRRnknvPwT1914TAm3jN3547cwfRmGkloGBFmB-6Xf2HfTthv4cdeSq8naUJ5Ka8Yao059K1ft-CY3-afpVz5msBfiQYxm_sj-ZQYPtLs_ipot1P5sZtNLhvzk_3k6odlnYY79WQZrxvE0g91LNTL2a-luCB25adsHnmCqJlb5covHmXAHH2nExg"/>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">I am a <span class="text-primary font-bold">Seller</span></h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8 px-4 flex-grow">Manage your kitchen, add menu and receive orders.</p>
+<button id="sellerBtn" class="w-full bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md py-4 px-8 rounded-full transition-colors flex items-center justify-center gap-2">
+                    Continue as Seller
+                    <span class="material-symbols-outlined text-[20px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<!-- Buyer Card -->
+<div id="buyerCard" class="bg-[#EAF6E9] rounded-[24px] p-8 flex flex-col items-center text-center relative overflow-hidden group cursor-pointer transition-transform hover:-translate-y-1 hover:shadow-[0_16px_32px_-12px_rgba(27,109,36,0.15)] border border-secondary/10">
+<div class="absolute top-6 right-6 w-12 h-12 bg-secondary-container text-on-secondary-container rounded-full flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined" data-icon="person" style="font-variation-settings: 'FILL' 1;">person</span>
+</div>
+<div class="w-48 h-48 mb-6 relative">
+<div class="absolute inset-0 bg-secondary/10 rounded-full blur-xl transform group-hover:scale-110 transition-transform"></div>
+<img alt="Buyer Illustration" class="w-full h-full object-cover rounded-full relative z-10 border-4 border-surface shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGa0tdfsJEm_OLg0UHag9bhDtW9mzQ2_Fu3sc1fe5D2VhwwHmXyiImJ4Uyc_sSRE-id4Ttu2TvT3drVCpP1TZ6LifNOk6V03z7w63QOSLsMHvoZhWiKsX3hxx_oZE-7yg1q9N5xawkDEB9iPOKV7MFW5OaJH38AFbrm9ue9Xrgayz54qYm5Gq77F32d6OHaKOkoStF9q9GsNqp8rsis6oySU2UtL6HXuHuev2laMUyWdS7YcuvABUXTw"/>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">I am a <span class="text-secondary font-bold">Buyer</span></h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8 px-4 flex-grow">Discover home kitchens, choose food and place orders.</p>
+<button id="buyerBtn" class="w-full bg-secondary hover:bg-secondary/90 text-on-secondary font-label-md text-label-md py-4 px-8 rounded-full transition-colors flex items-center justify-center gap-2">
+                    Continue as Buyer
+                    <span class="material-symbols-outlined text-[20px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Footer Trust Section -->
+<div class="flex flex-col items-center text-center max-w-md mx-auto">
+<div class="flex items-center justify-center gap-2 text-secondary mb-2 bg-secondary/10 px-4 py-2 rounded-full">
+<span class="material-symbols-outlined" data-icon="shield" style="font-variation-settings: 'FILL' 1;">shield</span>
+<span class="font-label-md text-label-md font-bold text-on-surface">Safe • Verified • Trusted</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">We ensure hygienic food and trusted home kitchens.</p>
+</div>
+</div>
+
+<script>
+// ==========================================
+// ROLE SELECTION & NAVIGATION LOGIC
+// ==========================================
+
+function selectRole(role) {
+  // Store role in localStorage
+  localStorage.setItem("userRole", role);
+  console.log("Selected userRole:", role);
+
+  // Navigate to login screen regardless of role (role is stored in localStorage)
+  window.location.href = "../login_screen/code.html";
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const sellerCard = document.getElementById("sellerCard");
+  const buyerCard = document.getElementById("buyerCard");
+  const sellerBtn = document.getElementById("sellerBtn");
+  const buyerBtn = document.getElementById("buyerBtn");
+
+  if (sellerCard) sellerCard.addEventListener("click", () => selectRole("seller"));
+  if (buyerCard) buyerCard.addEventListener("click", () => selectRole("buyer"));
+
+  // Ensure button clicks also trigger role selection without double bubbling
+  if (sellerBtn) sellerBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    selectRole("seller");
+  });
+
+  if (buyerBtn) buyerBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    selectRole("buyer");
+  });
+});
+</script>
+</body></html>
