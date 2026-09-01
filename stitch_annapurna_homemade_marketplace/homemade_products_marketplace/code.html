@@ -1,0 +1,611 @@
+﻿<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Annapurna - Homemade Products</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,600;9..40,700&amp;family=Plus+Jakarta+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed": "#ffdcbe",
+                      "surface-container-low": "#faf3e9",
+                      "on-surface-variant": "#594238",
+                      "primary": "#9f3d00",
+                      "error": "#ba1a1a",
+                      "on-tertiary": "#ffffff",
+                      "surface-container-highest": "#e8e2d8",
+                      "on-secondary-fixed-variant": "#005312",
+                      "error-container": "#ffdad6",
+                      "surface-container-lowest": "#ffffff",
+                      "background": "#fff8f0",
+                      "on-secondary": "#ffffff",
+                      "surface-container-high": "#eee7dd",
+                      "on-tertiary-fixed-variant": "#59422c",
+                      "outline": "#8c7166",
+                      "surface-variant": "#e8e2d8",
+                      "tertiary-container": "#8b6f56",
+                      "on-background": "#1e1b16",
+                      "on-secondary-container": "#217128",
+                      "on-primary-fixed-variant": "#7c2e00",
+                      "surface": "#fff8f0",
+                      "primary-fixed": "#ffdbcd",
+                      "on-error-container": "#93000a",
+                      "inverse-on-surface": "#f7f0e6",
+                      "primary-fixed-dim": "#ffb596",
+                      "primary-container": "#c74e00",
+                      "on-primary-container": "#fffbff",
+                      "surface-bright": "#fff8f0",
+                      "on-secondary-fixed": "#002204",
+                      "tertiary-fixed-dim": "#e2c0a3",
+                      "secondary-fixed": "#a3f69c",
+                      "secondary-fixed-dim": "#88d982",
+                      "on-primary-fixed": "#360f00",
+                      "on-primary": "#ffffff",
+                      "on-surface": "#1e1b16",
+                      "on-tertiary-container": "#fffbff",
+                      "secondary": "#1b6d24",
+                      "on-tertiary-fixed": "#291806",
+                      "inverse-primary": "#ffb596",
+                      "on-error": "#ffffff",
+                      "tertiary": "#705740",
+                      "inverse-surface": "#33302a",
+                      "surface-dim": "#e0d9d0",
+                      "secondary-container": "#a0f399",
+                      "surface-tint": "#a33e00",
+                      "outline-variant": "#e0c0b3",
+                      "surface-container": "#f4ede3"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xs": "4px",
+                      "margin-desktop": "64px",
+                      "margin-mobile": "16px",
+                      "sm": "12px",
+                      "lg": "48px",
+                      "xl": "80px",
+                      "md": "24px",
+                      "gutter": "20px",
+                      "base": "8px"
+              },
+              "fontFamily": {
+                      "headline-xl": [
+                              "DM Sans"
+                      ],
+                      "label-sm": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "headline-md": [
+                              "DM Sans"
+                      ],
+                      "label-md": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "body-md": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "headline-lg": [
+                              "DM Sans"
+                      ],
+                      "headline-lg-mobile": [
+                              "DM Sans"
+                      ],
+                      "body-lg": [
+                              "Plus Jakarta Sans"
+                      ]
+              },
+              "fontSize": {
+                      "headline-xl": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "28px",
+                              {
+                                      "lineHeight": "36px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        /* Hide scrollbar for horizontal scrolling areas */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        /* Soft tinted shadow for modern organicism */
+        .shadow-organic {
+            box-shadow: 0 4px 16px rgba(89, 66, 56, 0.05);
+        }
+
+        @keyframes toastIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-toast {
+            animation: toastIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+      <script src="../cart.js"></script>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-28 antialiased selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Toast Notification -->
+<div id="toastNotification" class="fixed top-5 right-5 z-50 hidden bg-primary text-on-primary px-4 py-3 rounded-xl shadow-lg flex items-center gap-2 font-label-md transition-all">
+    <span class="material-symbols-outlined text-sm">check_circle</span>
+    <span id="toastMessage">Product added to cart!</span>
+</div>
+
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-40 bg-background shadow-sm shadow-surface-container-high/50">
+<div class="flex justify-between items-center px-margin-mobile py-base w-full max-w-7xl mx-auto">
+<button id="backBtn" class="p-2 -ml-2 rounded-full hover:bg-surface-container transition-colors active:scale-95 text-primary" title="Go Back">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-[20px] font-semibold text-primary tracking-tight truncate flex-1 text-center pr-2">Homemade Products</h1>
+<a href="../shopping_cart_delivery_selection/code.html" class="p-2 -mr-2 rounded-full hover:bg-surface-container transition-colors active:scale-95 text-primary relative" title="View Cart">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span id="headerCartBadge" class="absolute top-1 right-1 bg-error text-on-error rounded-full text-[10px] font-bold w-4 h-4 flex items-center justify-center border border-background">0</span>
+</a>
+</div>
+</header>
+<main class="max-w-7xl mx-auto">
+<!-- Search Bar Section -->
+<div class="px-margin-mobile py-sm">
+<div class="flex items-center gap-xs">
+<div class="flex-1 flex items-center bg-surface-container-high rounded-full px-sm py-2 focus-within:ring-2 focus-within:ring-primary focus-within:bg-surface-container-lowest transition-all">
+<span class="material-symbols-outlined text-on-surface-variant mr-2">search</span>
+<input id="searchInput" class="bg-transparent border-none outline-none text-body-md text-on-surface w-full placeholder:text-on-surface-variant/70 p-0 focus:ring-0" placeholder="Search for pickles, papad, snacks..." type="text"/>
+</div>
+<button id="tuneFilterBtn" class="p-2 rounded-full bg-surface-container-high text-on-surface hover:bg-surface-container-highest transition-colors flex-shrink-0" title="Filter Options">
+<span class="material-symbols-outlined">tune</span>
+</button>
+</div>
+</div>
+
+<!-- Category Filters -->
+<div id="categoryChipsContainer" class="px-margin-mobile pb-md pt-xs overflow-x-auto no-scrollbar flex gap-2 snap-x">
+<button data-category="All" class="chip-btn snap-start shrink-0 px-4 py-1.5 rounded-full bg-primary text-on-primary font-label-md transition-colors whitespace-nowrap">
+                All
+            </button>
+<button data-category="Pickles" class="chip-btn snap-start shrink-0 px-4 py-1.5 rounded-full bg-transparent border border-outline text-on-surface-variant font-label-md hover:bg-surface-container-low transition-colors whitespace-nowrap">
+                Pickles
+            </button>
+<button data-category="Papad" class="chip-btn snap-start shrink-0 px-4 py-1.5 rounded-full bg-transparent border border-outline text-on-surface-variant font-label-md hover:bg-surface-container-low transition-colors whitespace-nowrap">
+                Papad
+            </button>
+<button data-category="Snacks" class="chip-btn snap-start shrink-0 px-4 py-1.5 rounded-full bg-transparent border border-outline text-on-surface-variant font-label-md hover:bg-surface-container-low transition-colors whitespace-nowrap">
+                Snacks
+            </button>
+<button data-category="Masalas" class="chip-btn snap-start shrink-0 px-4 py-1.5 rounded-full bg-transparent border border-outline text-on-surface-variant font-label-md hover:bg-surface-container-low transition-colors whitespace-nowrap">
+                Masalas
+            </button>
+<button data-category="Sweets" class="chip-btn snap-start shrink-0 px-4 py-1.5 rounded-full bg-transparent border border-outline text-on-surface-variant font-label-md hover:bg-surface-container-low transition-colors whitespace-nowrap">
+                Sweets
+            </button>
+<button data-category="Chutneys" class="chip-btn snap-start shrink-0 px-4 py-1.5 rounded-full bg-transparent border border-outline text-on-surface-variant font-label-md hover:bg-surface-container-low transition-colors whitespace-nowrap">
+                Chutneys
+            </button>
+</div>
+
+<!-- Product Grid (3 Column) -->
+<div id="productsGrid" class="px-margin-mobile grid grid-cols-3 gap-2">
+    <!-- Dynamic Product Cards -->
+</div>
+
+<!-- No Products Found Component -->
+<div id="noProductsMessage" class="hidden w-full bg-surface border border-surface-container-highest rounded-2xl p-8 flex flex-col items-center text-center gap-3 shadow-organic my-4">
+    <div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+        <span class="material-symbols-outlined text-3xl">search_off</span>
+    </div>
+    <h4 class="font-headline-md text-headline-md text-on-surface">No products found</h4>
+    <p class="font-body-md text-xs text-on-surface-variant max-w-xs">We couldn't find any products matching your active category and search filter.</p>
+    <button id="resetProductsFilterBtn" class="mt-1 bg-primary text-on-primary px-5 py-2 rounded-full font-label-md text-xs hover:bg-primary/90 transition-colors">
+        Show All Products
+    </button>
+</div>
+</main>
+
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-sm pb-base pt-xs bg-surface shadow-[0_-4px_24px_rgba(51,48,42,0.08)] rounded-t-xl max-w-7xl mx-auto right-0">
+<!-- Home -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-highest rounded-full transition-all active:scale-90 duration-200" href="../annapurna_home_screen/code.html">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm mt-1">Home</span>
+</a>
+<!-- Orders -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-highest rounded-full transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-label-sm text-label-sm mt-1">Orders</span>
+</a>
+<!-- Cart (Active) -->
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 active:scale-90 transition-transform duration-200 relative" href="../shopping_cart_delivery_selection/code.html">
+<div class="relative">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">shopping_basket</span>
+<span id="navCartBadge" class="absolute -top-1 -right-2 bg-error text-on-error rounded-full text-[10px] font-bold w-4 h-4 flex items-center justify-center border border-surface">0</span>
+</div>
+<span class="font-label-sm text-label-sm mt-1">Cart</span>
+</a>
+<!-- Messages -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-highest rounded-full transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="font-label-sm text-label-sm mt-1">Messages</span>
+</a>
+<!-- Account -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-highest rounded-full transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm mt-1">Account</span>
+</a>
+</nav>
+
+<script>
+// ==========================================
+// MOCK DATA
+// ==========================================
+
+const productsData = [
+  {
+    id: "p1",
+    name: "Mango Pickle",
+    seller: "Aai's Kitchen",
+    price: 150,
+    weight: "250g",
+    rating: 4.8,
+    reviewsCount: 120,
+    category: "Pickles",
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDiNvbemFYzY-zjUyer-YNkqOD49UpQXZkg4nC-Y9mc3pSH8YchDpv9W5C_bqLZ3Qljo7yd1sjGKBcF_PYYK67X6_JwrwPXYXCjlNLPy2-zIfmGrK3X7uX2-R-rokqgJUKEbrw9QxE26lzStjXAKxHa3fprzAbdES3bk2bhnW_5CFOZitt-aPXcsLQdQdPwBK8rvswVscSkarHDNXSVpHYW01ZlmWNSUTcehEMsK9DxzPr6-O_AkRKR9Q"
+  },
+  {
+    id: "p2",
+    name: "Lemon Pickle",
+    seller: "Tasty Traditions",
+    price: 140,
+    weight: "250g",
+    rating: 4.5,
+    reviewsCount: 85,
+    category: "Pickles",
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBYk1_rPh1Ywdag_uqVAHkdxYH-HvGBjjF_Nudo3-YMZD5cgd55NGQyKrRqrBzEIORbDyaIfwbNddhP2_7FRmEw1p9s9MU_VaM8_yw5MGvow5WoTa1KRMfHC_4cGXQ1w_Fw8T1GIz4f_QdtvH27Y7Z78EBUbQNeLo4KA2UZsTeH8WGSj4xYz8WxMmXZRhaW_c_WjeU8Iy8LeyDmkuWgtBQtPIQWVhrH4Y5TLEPFWzaG6E73ZG1yB5yvLw"
+  },
+  {
+    id: "p3",
+    name: "Garlic Pickle",
+    seller: "Spice Route",
+    price: 160,
+    weight: "200g",
+    rating: 4.9,
+    reviewsCount: 210,
+    category: "Pickles",
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAZsX6TkNsP20qH8yNBTQvkmQ9YY03Zoxw-Plfcosr3D6GrJAk-6UpLQZRShYapqfGg4QeRSJPpT8YcyAX_Rx2Vv7HSOjGrloc_WIJaoJFMH24iSLAWPgf_bi762ZJ4CVFD_1D8v9VuK_e3x4NUastAvEMVxDc0giIioAnI3jsNBx7_1cOLHKc8B0rYUDDanEK8n9_-zllZxvuBRRbbcUczmGPjo3Pl54D5AIHz8LWDVrwYaeHzR2pekg"
+  },
+  {
+    id: "p4",
+    name: "Mixed Veg Pickle",
+    seller: "Aai's Kitchen",
+    price: 145,
+    weight: "250g",
+    rating: 4.6,
+    reviewsCount: 95,
+    category: "Pickles",
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDXmQFjZq4waRRJmI7l6oTiUH0Fyihws-JawNLMFQ43Lf7e7XkIxBAOLlMa6rJF_EyOTDZE17TRGmccZe5tTwYzALg9F29y7rFISIlnnE9a78XwuAiv0KTfNwCb7kM83aEaSKwC0ccX-dQS6AzanuJ2Qqn9pcOTJpRuj2v9EHWpzTynH68yXzhUWxOO0GJ8HJVviyFJ4mgbcDqW__EQyIvSUgobIBEmK17CZjDq7ozWb0yHJQd3vCUUFg"
+  },
+  {
+    id: "p5",
+    name: "Green Chilli Pickle",
+    seller: "Spicy Bites",
+    price: 130,
+    weight: "200g",
+    rating: 4.7,
+    reviewsCount: 150,
+    category: "Pickles",
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCD09QQ1uDu1i_xWOVq9In2PGGAzEVRVzCvoVbWb-ro6o1nQ2HR2A5fHPg2lzP0FVZYPzykYZM5XcS7oY5m72JBpjDoQSjavISbevnex7bBCdAe-nedL-Ut_masAcqmmCGf5ax6y4a_tY8tmhZT8gnxwd6G42KeKzcTIb0AZmqHfZSGW7ZGWxauVPSdZXwi0iIyLHhLku7-1VktgqbuM1ubtG5Jn5vJBgi3ObX2IBvUTelJ2SvEXNXgbg"
+  },
+  {
+    id: "p6",
+    name: "Masala Papad",
+    seller: "Heritage Snacks",
+    price: 90,
+    weight: "200g (15 pcs)",
+    rating: 4.8,
+    reviewsCount: 320,
+    category: "Papad",
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCMLwW4DVgyyXhQhrT_2-mJDL2HMFnaGuQK96LEwu39q1ar84I41dXWfx9u9WJvFbJVdmkSk0GQ6i1JBSMBkaaPT1zznFdgMWXkjtY7y8kqQ_65gwQfRB60qdrPScr_jSY5KE3CMB1F8_urcTL9LzdA96b5gDK52Kav211yYrKpViuXYaFvtuoUfvEnyKop4BsNwjqgtUbuPxzUxfjd-5fh3UpkM956Q4vEFAiIbZfHsMdEGW5o4q5O4w"
+  },
+  {
+    id: "p7",
+    name: "Plain Udad Papad",
+    seller: "Heritage Snacks",
+    price: 85,
+    weight: "200g (15 pcs)",
+    rating: 4.6,
+    reviewsCount: 180,
+    category: "Papad",
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDhXZL7gqJIE4mJtDIIPKeQcHL2lKnChDm1M_4qbXiiBCf13eK10DFolHOUo4xa0OY5Paii00kp4h0A1fVy4vFaThbPNwVeHmmNT37a52Tuwau5_I212Pii39BxffibFuKzOjs4NwoySUndeYwqAPFaTdAXnrkuG4TWjEmvqERUJ0BqXjBUtY1HTPMnzmgQprxTVjkWLsWzVdj9p1OSMdN1pMHBC1i26q6es2NXnqxwZKNOZNsBJZUiTQ"
+  },
+  {
+    id: "p8",
+    name: "Ribbon Pakoda",
+    seller: "Crunchy Delights",
+    price: 110,
+    weight: "250g",
+    rating: 4.9,
+    reviewsCount: 450,
+    category: "Snacks",
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDaJqpQshKAK38p5lKiFN2gywgONqil7DP8wFfN9zoE7PvqORcBBJ3oNb-5GJacnNey0O2Pn6OtKXsjGB3tw-vCPBeiqzlrHTeh9zWdmpnxkh3Q2aCgvywkErm8yFC97g3KAtAhO5al2H1-2xSlrh90_nIOUtuhqYmf7IeUBMAQP-8Yl4uLnYI51hQE9Sf5tEOWDcFSNtT19KXC_bf-j2Mi8w4pJnsS_79dSnCiIpDjmESeaXcAJKwniw"
+  },
+  {
+    id: "p9",
+    name: "Butter Chakli",
+    seller: "Crunchy Delights",
+    price: 120,
+    weight: "250g",
+    rating: 4.8,
+    reviewsCount: 512,
+    category: "Snacks",
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCujkgqUi33whLloDk_WKNrO2-NoXa9OKh_62r4aOpX0NI-cegjXyF4Q-cF9JMUIJeBhCY3aXKnYv9_8mirwOEe9b7HA7X_F2EHho1ZysG7GvVoPjG0KGIbM8W8_rdPD00ZTo01yeieKdglV5RFi9ZP7pMs_0u1NA2S_DjdOYR3ELTkGYEDrylN1OzrH3foa8z9jX69ATfdNZWE3AnTb5aNnB6aBzH1EkdvZF0TiNELrE4J5SDJclp71A"
+  },
+  {
+    id: "p10",
+    name: "Badam Milk Mix",
+    seller: "Pure Naturals",
+    price: 250,
+    weight: "200g",
+    rating: 4.9,
+    reviewsCount: 115,
+    category: "Masalas",
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBqDVkyYcTIq3auSUnNuy8RXjtNcMUeXFRQpa5KYSMjcuGT98otbQg4UYD2ncpYS8Hfav43CuVQtTBJuDryZ4tFxChOt5mgifderat3I8ZyG1_SIFRscHlFYs_m6hTYYnNBu4I_khCYldiBqxHhSxsnN978S6oTtuOejapO1gKe0057fCZUlcO4-cJNwsBWqfMTnkEo8kWZXSOSo-Wv5u3ptqZ9h4GXEY0Ykk5j3KNznn_zUEEoqiXBfw"
+  },
+  {
+    id: "p11",
+    name: "Jaggery Peanut Chikki",
+    seller: "Sweet Memories",
+    price: 130,
+    weight: "250g",
+    rating: 4.7,
+    reviewsCount: 280,
+    category: "Sweets",
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBWRmKAHt6tfKaAb_gMFrcKU6ZYPR1eTDhGdfW5kqBoUGvfVRAwe7RZm2VBVBdc8C4QiP6J4xAnaKfHHlvkoABtmKS14ky3jnSeRBKfdSUwKyADDmRAs5FzWy18yWt1CTOTGCF6m84wWonSGy-fPski7xbouq3wBk-uCXwD-jiUprVgIjnh3buKfZTAUljyh1uTxxp2pSnU3ZAxXglz7xCm3WqnUdlqLXxMltc5qOq7k9ydrAi6KBohVA"
+  },
+  {
+    id: "p12",
+    name: "Sweet Mango Chutney",
+    seller: "Tasty Traditions",
+    price: 160,
+    weight: "250g",
+    rating: 4.9,
+    reviewsCount: 190,
+    category: "Chutneys",
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuC5Xti1ZMpxFyfEU7bOob9aokGMzWNxFOvcWbnB3ZV21Ttx2EIA-hZeh4cRiKMA8pwC_pokkXfCLy83wi2FXcX_yKpM8D4x7G1gzoL-hCaPmOrDIbZJUGtQWbFWbf4oveaPCvS_3qqvVOYFx4YPSN8osyElLZWgP_nzjzmCLvR9foHGhOWdTErf6oK6q0Tarl96NmxiwzuPbM5Q0_1V061kk5hVT59wuazK0zBuLB-LHd5ZNelY4KMlLQ"
+  }
+];
+
+// Active Filter State
+let activeCategory = "All";
+// ==========================================
+// RENDERING & FILTERING FUNCTIONS
+// ==========================================
+
+function renderProducts() {
+  const searchInput = document.getElementById("searchInput");
+  const query = searchInput ? searchInput.value.toLowerCase().trim() : "";
+
+  const productsGrid = document.getElementById("productsGrid");
+  const noProductsMessage = document.getElementById("noProductsMessage");
+
+  if (!productsGrid) return;
+
+  // Filter logic: category match AND search match
+  let filtered = [];
+  try {
+      filtered = productsData.filter(product => {
+        const matchesCategory = (activeCategory === "All") || (product.category === activeCategory);
+        const matchesSearch = !query || 
+          (product.name && product.name.toLowerCase().includes(query)) || 
+          (product.seller && product.seller.toLowerCase().includes(query)) ||
+          (product.category && product.category.toLowerCase().includes(query));
+        return matchesCategory && matchesSearch;
+      });
+  } catch(e) {
+      alert("Error filtering: " + e.message);
+  }
+
+  if (filtered.length === 0) {
+    productsGrid.innerHTML = "";
+    if (noProductsMessage) noProductsMessage.classList.remove("hidden");
+    return;
+  } else {
+    if (noProductsMessage) noProductsMessage.classList.add("hidden");
+  }
+
+  productsGrid.innerHTML = filtered.map(product => `
+    <div class="bg-surface-container-lowest rounded-lg shadow-organic border border-outline-variant flex flex-col overflow-hidden justify-between">
+      <div class="aspect-square bg-surface-container-high relative overflow-hidden">
+        <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover" />
+      </div>
+      <div class="p-2 flex flex-col flex-1 gap-1 justify-between">
+        <div>
+          <h3 class="font-label-sm font-semibold text-on-surface leading-tight line-clamp-2">${product.name}</h3>
+          <p class="text-[10px] text-on-surface-variant truncate">${product.seller}</p>
+          <div class="flex items-center gap-0.5 mt-0.5">
+            <span class="material-symbols-outlined text-[12px] text-primary" style="font-variation-settings: 'FILL' 1;">star</span>
+            <span class="text-[10px] text-on-surface-variant">${product.rating} (${product.reviewsCount})</span>
+          </div>
+        </div>
+        <div>
+          <div class="flex items-end justify-between mt-auto pt-1">
+            <div>
+              <span class="block text-[9px] text-on-surface-variant">${product.weight}</span>
+              <span class="font-label-sm font-bold text-on-surface leading-none">₹${product.price}</span>
+            </div>
+          </div>
+          <button onclick="addToCart('${product.id}')" class="mt-2 bg-primary text-on-primary w-full py-1.5 rounded-full text-[10px] font-bold flex items-center justify-center gap-1 active:scale-95 transition-transform hover:bg-primary-container">
+            Add <span class="material-symbols-outlined text-[12px]">shopping_cart</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function selectCategory(category, targetBtn) {
+  activeCategory = category;
+
+  // Update chip button active styling
+  const chipBtns = document.querySelectorAll(".chip-btn");
+  chipBtns.forEach(btn => {
+    if (btn.getAttribute("data-category") === category) {
+      btn.className = "chip-btn snap-start shrink-0 px-4 py-1.5 rounded-full bg-primary text-on-primary font-label-md transition-colors whitespace-nowrap cursor-pointer";
+    } else {
+      btn.className = "chip-btn snap-start shrink-0 px-4 py-1.5 rounded-full bg-transparent border border-outline text-on-surface-variant font-label-md hover:bg-surface-container-low transition-colors whitespace-nowrap cursor-pointer";
+    }
+  });
+
+  renderProducts();
+}
+
+// ==========================================
+// CART & NOTIFICATION LOGIC
+// ==========================================
+
+function addToCart(productId) {
+  const product = productsData.find(p => p.id === productId);
+  if (!product) return;
+
+  if (typeof AnnapurnaCart !== 'undefined') {
+      AnnapurnaCart.addItem({ ...product, quantity: 1, type: 'product' });
+  }
+
+  showToast(`Added "${product.name}" to cart!`);
+}
+
+function showToast(message) {
+  const toast = document.getElementById("toastNotification");
+  const toastMessage = document.getElementById("toastMessage");
+  if (!toast || !toastMessage) return;
+
+  toastMessage.textContent = message;
+  toast.classList.remove("hidden");
+  toast.classList.add("animate-toast");
+
+  setTimeout(() => {
+    toast.classList.add("hidden");
+    toast.classList.remove("animate-toast");
+  }, 2500);
+}
+
+// ==========================================
+// DOM INITIALIZATION
+// ==========================================
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Initial Render
+  renderProducts();
+
+  // Search input listener
+  const searchInput = document.getElementById("searchInput");
+  if (searchInput) {
+    searchInput.addEventListener("input", renderProducts);
+  }
+
+  // Category chips listeners
+  const chipBtns = document.querySelectorAll(".chip-btn");
+  chipBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const cat = btn.getAttribute("data-category");
+      selectCategory(cat, btn);
+    });
+  });
+
+  // Reset filter button
+  const resetProductsFilterBtn = document.getElementById("resetProductsFilterBtn");
+  if (resetProductsFilterBtn) {
+    resetProductsFilterBtn.addEventListener("click", () => {
+      if (searchInput) searchInput.value = "";
+      const allChip = document.querySelector('.chip-btn[data-category="All"]');
+      selectCategory("All", allChip);
+    });
+  }
+
+  // Back button
+  const backBtn = document.getElementById("backBtn");
+  if (backBtn) {
+    backBtn.addEventListener("click", () => {
+      if (window.history.length > 1) {
+        window.history.back();
+      } else {
+        window.location.href = "../annapurna_home_screen/code.html";
+      }
+    });
+  }
+});
+</script>
+</body></html>
