@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <rect width="100%" height="100%" fill="#E8E2D8"/>
+  <circle cx="200" cy="200" r="120" fill="#9F3D00" opacity="0.8"/>
+  <text x="200" y="215" font-family="sans-serif" font-size="40" fill="white" text-anchor="middle">Curry Bowl</text>
+</svg>
