@@ -1,0 +1,381 @@
+﻿<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Annapurna - Login</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                "colors": {
+                    "primary": "#9f3d00", "on-primary": "#ffffff", "primary-container": "#c74e00",
+                    "on-primary-container": "#fffbff", "secondary": "#1b6d24", "on-secondary": "#ffffff",
+                    "secondary-container": "#a0f399", "on-secondary-container": "#217128",
+                    "background": "#fff8f0", "on-background": "#1e1b16", "surface": "#fff8f0",
+                    "on-surface": "#1e1b16", "surface-variant": "#e8e2d8", "on-surface-variant": "#594238",
+                    "surface-container": "#f4ede3", "surface-container-low": "#faf3e9",
+                    "surface-container-lowest": "#ffffff", "outline": "#8c7166",
+                    "outline-variant": "#e0c0b3", "error": "#ba1a1a", "on-error": "#ffffff",
+                    "tertiary": "#705740", "on-tertiary": "#ffffff"
+                },
+                "spacing": { "margin-mobile": "16px", "md": "24px", "sm": "12px", "xs": "4px", "base": "8px", "xl": "80px" },
+                "fontFamily": { "headline-md": ["DM Sans"], "headline-lg-mobile": ["DM Sans"], "body-md": ["Plus Jakarta Sans"], "label-md": ["Plus Jakarta Sans"], "label-sm": ["Plus Jakarta Sans"] },
+                "fontSize": {
+                    "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                    "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "700" }],
+                    "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                    "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                    "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }]
+                }
+            }
+        }
+    }
+</script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-fill-1 {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen relative overflow-hidden font-body-md">
+<!-- Decorative Background Elements -->
+<div class="absolute inset-0 pointer-events-none opacity-5">
+<span class="material-symbols-outlined absolute top-32 left-10 text-4xl rotate-12">local_dining</span>
+<span class="material-symbols-outlined absolute top-48 right-12 text-5xl -rotate-12">eco</span>
+<span class="material-symbols-outlined absolute bottom-40 left-16 text-3xl rotate-45">restaurant</span>
+</div>
+<!-- Top App Bar -->
+<header class="bg-background flex items-center justify-between px-margin-mobile w-full h-16 fixed top-0 z-10">
+<button id="backBtn" aria-label="Go back" class="text-primary hover:opacity-80 transition-opacity p-2 -ml-2 rounded-full flex items-center justify-center cursor-pointer" title="Go Back">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div class="flex-1"></div>
+</header>
+<!-- Main Content Area -->
+<main class="pt-24 pb-safe px-margin-mobile max-w-md mx-auto flex flex-col items-center justify-center min-h-[90vh] relative z-10">
+<!-- Logo Section -->
+<div class="flex flex-col items-center mb-8">
+<img alt="Annapurna Logo" class="w-20 h-20 mb-3 object-contain" src="../assets/images/logo.png"/>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary tracking-tight">Annapurna</h1>
+<p class="font-label-sm text-label-sm text-secondary uppercase tracking-widest mt-1">Pre-Ordered Food System</p>
+</div>
+<!-- Header -->
+<div class="text-center mb-8 w-full">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-2">Welcome Back!</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Login to your account</p>
+</div>
+<!-- Login Form -->
+<form id="loginForm" class="w-full space-y-6" novalidate>
+<!-- Mobile Number Input -->
+<div class="flex flex-col space-y-1">
+<label class="font-label-md text-label-md text-on-surface">Mobile Number</label>
+<div id="mobileContainer" class="flex items-center bg-surface-container rounded-xl border-2 border-outline-variant focus-within:border-primary focus-within:ring-1 focus-within:ring-primary/20 transition-all px-3 py-1.5 h-14">
+<div class="flex items-center text-on-surface-variant mr-2 font-label-md select-none">
+<span>+91</span>
+</div>
+<div class="w-px h-6 bg-outline-variant mx-2"></div>
+<input id="mobileInput" autocomplete="tel" class="flex-1 bg-transparent border-none focus:ring-0 text-on-surface font-body-md placeholder:text-on-surface-variant/50 w-full outline-none px-2" placeholder="Enter mobile number" type="tel" maxlength="10"/>
+<span class="material-symbols-outlined text-outline ml-2">phone_iphone</span>
+</div>
+<p id="mobileError" role="alert" aria-live="polite" class="text-xs text-error font-label-sm mt-1 hidden">Please enter a valid 10-digit mobile number.</p>
+</div>
+
+<!-- Password Input -->
+<div class="flex flex-col space-y-1">
+<label class="font-label-md text-label-md text-on-surface">Password</label>
+<div id="passwordContainer" class="flex items-center bg-surface-container rounded-xl border-2 border-outline-variant focus-within:border-primary focus-within:ring-1 focus-within:ring-primary/20 transition-all px-3 py-1.5 h-14">
+<span class="material-symbols-outlined text-outline mr-3">lock</span>
+<input id="passwordInput" autocomplete="current-password" class="flex-1 bg-transparent border-none focus:ring-0 text-on-surface font-body-md placeholder:text-on-surface-variant/50 w-full outline-none" placeholder="Enter your password" type="password"/>
+<button id="togglePasswordBtn" aria-label="Show password" aria-pressed="false" class="text-outline hover:text-primary transition-colors ml-2 p-1 cursor-pointer" type="button" title="Toggle password visibility">
+<span id="eyeIcon" class="material-symbols-outlined">visibility_off</span>
+</button>
+</div>
+<p id="passwordError" role="alert" aria-live="polite" class="text-xs text-error font-label-sm mt-1 hidden">Password cannot be empty.</p>
+</div>
+
+<!-- Forgot Password -->
+<div class="flex justify-end w-full">
+<a id="forgotPasswordLink" class="font-label-sm text-label-sm text-primary hover:text-primary-container transition-colors cursor-pointer" href="#">Forgot Password?</a>
+</div>
+
+<!-- Primary CTA -->
+<button id="submitBtn" class="w-full bg-primary text-on-primary font-label-md text-label-md py-4 rounded-full flex items-center justify-center space-x-2 hover:bg-primary-container transition-all active:scale-95 shadow-md cursor-pointer" type="submit">
+<span>Login</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</form>
+
+<!-- Social Login Divider -->
+<div class="w-full flex items-center my-8 opacity-60">
+<div class="flex-1 h-px bg-outline-variant"></div>
+<span class="px-4 font-label-sm text-label-sm text-on-surface-variant">or login with</span>
+<div class="flex-1 h-px bg-outline-variant"></div>
+</div>
+
+<!-- Social Login Buttons -->
+<div class="flex justify-center space-x-md w-full mb-8">
+<button id="googleLoginBtn" class="flex flex-col items-center justify-center space-y-2 w-24 h-24 bg-surface-container rounded-2xl hover:bg-surface-variant transition-colors border border-outline-variant shadow-sm active:scale-95 cursor-pointer">
+<span class="material-symbols-outlined text-3xl text-on-surface">account_circle</span>
+<span class="font-label-sm text-label-sm text-on-surface">Google</span>
+</button>
+<button id="whatsappLoginBtn" class="flex flex-col items-center justify-center space-y-2 w-24 h-24 bg-surface-container rounded-2xl hover:bg-surface-variant transition-colors border border-outline-variant shadow-sm active:scale-95 cursor-pointer">
+<span class="material-symbols-outlined text-3xl text-secondary">chat</span>
+<span class="font-label-sm text-label-sm text-on-surface">WhatsApp</span>
+</button>
+</div>
+
+<!-- Footer -->
+<div class="mt-auto pt-4 text-center">
+<p class="font-body-md text-body-md text-on-surface-variant">
+                Don't have an account? 
+                <a id="signUpLink" class="font-label-md text-label-md text-primary font-bold hover:underline cursor-pointer" href="#">Sign Up</a>
+</p>
+</div>
+</main>
+
+<!-- Corner Image Accents -->
+<div class="fixed bottom-0 left-0 w-32 h-32 md:w-48 md:h-48 z-0 pointer-events-none overflow-hidden rounded-tr-full opacity-40">
+<img alt="Curry Dish Accent" class="w-full h-full object-cover" src="../assets/images/curry_bowl.svg"/>
+</div>
+<div class="fixed bottom-0 right-0 w-32 h-32 md:w-48 md:h-48 z-0 pointer-events-none overflow-hidden rounded-tl-full opacity-40">
+<img alt="Thali Dish Accent" class="w-full h-full object-cover" src="../assets/images/thali.svg"/>
+</div>
+
+<script>
+// ==========================================
+// FORM VALIDATION & INTERACTIVITY
+// ==========================================
+
+const BASE_URL = "..";
+
+async function hashPassword(password) {
+  try {
+    if (window.crypto && window.crypto.subtle) {
+      const encoder = new TextEncoder();
+      const data = encoder.encode(password);
+      const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+  } catch (e) {
+    console.warn("crypto.subtle unavailable, using fallback hash");
+  }
+  // Fallback simple hash for non-secure contexts (e.g. mobile testing on local network)
+  let hash = 0;
+  for (let i = 0; i < password.length; i++) {
+    const char = password.charCodeAt(i);
+    hash = ((hash << 5) - hash) + char;
+    hash = hash & hash; // Convert to 32bit integer
+  }
+  return Math.abs(hash).toString(16).padStart(16, '0');
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Auto-redirect if already logged in (e.g. via quickLogin on demo setup page)
+  const currentUser = localStorage.getItem("annapurna_current_user");
+  const storedRole = localStorage.getItem("userRole");
+  if (currentUser && storedRole) {
+    if (storedRole === "seller") {
+      window.location.href = `${BASE_URL}/seller_home_dashboard/code.html`;
+      return;
+    } else if (storedRole === "buyer") {
+      window.location.href = `${BASE_URL}/annapurna_home_screen/code.html`;
+      return;
+    }
+  }
+
+  const loginForm = document.getElementById("loginForm");
+  const mobileInput = document.getElementById("mobileInput");
+  const passwordInput = document.getElementById("passwordInput");
+  const mobileError = document.getElementById("mobileError");
+  const passwordError = document.getElementById("passwordError");
+  const mobileContainer = document.getElementById("mobileContainer");
+  const passwordContainer = document.getElementById("passwordContainer");
+  const togglePasswordBtn = document.getElementById("togglePasswordBtn");
+  const eyeIcon = document.getElementById("eyeIcon");
+  const backBtn = document.getElementById("backBtn");
+  const forgotPasswordLink = document.getElementById("forgotPasswordLink");
+  const signUpLink = document.getElementById("signUpLink");
+  const googleLoginBtn = document.getElementById("googleLoginBtn");
+  const whatsappLoginBtn = document.getElementById("whatsappLoginBtn");
+
+  // Password Visibility Toggle
+  if (togglePasswordBtn && passwordInput && eyeIcon) {
+    togglePasswordBtn.addEventListener("click", () => {
+      if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        eyeIcon.textContent = "visibility";
+        togglePasswordBtn.setAttribute("aria-label", "Hide password");
+        togglePasswordBtn.setAttribute("aria-pressed", "true");
+      } else {
+        passwordInput.type = "password";
+        eyeIcon.textContent = "visibility_off";
+        togglePasswordBtn.setAttribute("aria-label", "Show password");
+        togglePasswordBtn.setAttribute("aria-pressed", "false");
+      }
+    });
+  }
+
+  // Live Input Reset Error Styling & Real-time filtering
+  if (mobileInput) {
+    mobileInput.addEventListener("input", (e) => {
+      e.target.value = e.target.value.replace(/\D/g, "");
+      if (mobileError) mobileError.classList.add("hidden");
+      if (mobileContainer) mobileContainer.classList.remove("border-error");
+    });
+  }
+
+  if (passwordInput) {
+    passwordInput.addEventListener("input", () => {
+      if (passwordError) passwordError.classList.add("hidden");
+      if (passwordContainer) passwordContainer.classList.remove("border-error");
+    });
+  }
+
+  // Form Submit Handler
+  if (loginForm) {
+    loginForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      
+      const submitBtn = document.getElementById("submitBtn");
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.classList.add("opacity-50", "pointer-events-none");
+        submitBtn.innerHTML = '<span class="material-symbols-outlined animate-spin text-sm">progress_activity</span><span>Checking...</span>';
+      }
+
+      let isValid = true;
+
+      const mobileVal = mobileInput ? mobileInput.value.trim() : "";
+      const passwordVal = passwordInput ? passwordInput.value.trim() : "";
+
+      // 10-digit Mobile Validation
+      const mobileRegex = /^\d{10}$/;
+      if (!mobileRegex.test(mobileVal)) {
+        if (mobileError) mobileError.classList.remove("hidden");
+        if (mobileContainer) mobileContainer.classList.add("border-error");
+        isValid = false;
+      } else {
+        if (mobileError) mobileError.classList.add("hidden");
+        if (mobileContainer) mobileContainer.classList.remove("border-error");
+      }
+
+      // Password non-empty Validation
+      if (passwordVal === "") {
+        if (passwordError) passwordError.classList.remove("hidden");
+        if (passwordContainer) passwordContainer.classList.add("border-error");
+        isValid = false;
+      } else {
+        if (passwordError) passwordError.classList.add("hidden");
+        if (passwordContainer) passwordContainer.classList.remove("border-error");
+      }
+
+      if (isValid) {
+        const inputPasswordObj = await hashPassword(passwordVal);
+
+        // ── ALLOW ALL USERS TO LOGIN ──
+        // Since demo account restrictions are removed, any valid 10-digit mobile and password
+        // will automatically generate a session for the role they selected on the previous screen.
+        let matchedRole = localStorage.getItem("userRole") || "buyer";
+        let matchedUser = {
+          mobile: mobileVal,
+          name: matchedRole === "seller" ? "Seller User" : "Buyer User",
+          role: matchedRole
+        };
+        
+        if (matchedRole === "seller") {
+          matchedUser.kitchenId = "k1";
+          matchedUser.kitchenName = "My Kitchen";
+        } else {
+          matchedUser.address = "Current Location";
+        }
+
+        if (matchedRole) {
+          // Valid credentials found – set session
+          localStorage.setItem("userRole", matchedRole);
+          localStorage.setItem("annapurna_current_user", JSON.stringify(matchedUser));
+          console.log("Login Successful! Role:", matchedRole);
+
+          if (matchedRole === "seller") {
+            window.location.href = `${BASE_URL}/seller_home_dashboard/code.html`;
+          } else {
+            window.location.href = `${BASE_URL}/annapurna_home_screen/code.html`;
+          }
+        } else {
+          // Re-enable submit button
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.classList.remove("opacity-50", "pointer-events-none");
+            submitBtn.innerHTML = '<span>Login</span><span class="material-symbols-outlined text-sm">arrow_forward</span>';
+          }
+
+          // Show invalid credentials error on mobile field (Bypass Fallback Removed)
+          if (mobileError && mobileContainer) {
+            mobileError.textContent = "Invalid credentials. Use demo accounts from the setup page.";
+            mobileError.classList.remove("hidden");
+            mobileContainer.classList.add("border-error");
+          }
+        }
+      } else {
+        // Re-enable submit button if validation failed early
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.classList.remove("opacity-50", "pointer-events-none");
+          submitBtn.innerHTML = '<span>Login</span><span class="material-symbols-outlined text-sm">arrow_forward</span>';
+        }
+      }
+    });
+  }
+
+  // Placeholder Link Click Handlers
+  if (forgotPasswordLink) {
+    forgotPasswordLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      console.log("Forgot Password clicked");
+      alert("Password reset instructions have been sent to your registered mobile number.");
+    });
+  }
+
+  if (signUpLink) {
+    signUpLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      console.log("Sign Up clicked");
+      window.location.href = `${BASE_URL}/choose_your_role/code.html`;
+    });
+  }
+
+  if (googleLoginBtn) {
+    googleLoginBtn.addEventListener("click", () => {
+      console.log("Google login clicked");
+      alert("Google OAuth login initiated.");
+    });
+  }
+
+  if (whatsappLoginBtn) {
+    whatsappLoginBtn.addEventListener("click", () => {
+      console.log("WhatsApp login clicked");
+      alert("WhatsApp OTP login initiated.");
+    });
+  }
+
+  
+  if (backBtn) {
+    backBtn.addEventListener("click", () => {
+      if (window.history.length > 1) {
+        window.history.back();
+      } else {
+        window.location.href = `${BASE_URL}/annapurna_home_screen/code.html`;
+      }
+    });
+  }
+});
+</script>
+</body></html>
