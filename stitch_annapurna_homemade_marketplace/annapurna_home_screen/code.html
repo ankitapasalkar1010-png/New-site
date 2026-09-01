@@ -1,0 +1,862 @@
+﻿<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Annapurna - Ghar ka swaad</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#59422c",
+                        "primary-fixed": "#ffdbcd",
+                        "secondary-container": "#a0f399",
+                        "tertiary": "#705740",
+                        "on-secondary-container": "#217128",
+                        "secondary-fixed-dim": "#88d982",
+                        "primary-fixed-dim": "#ffb596",
+                        "on-secondary": "#ffffff",
+                        "surface-variant": "#e8e2d8",
+                        "on-surface-variant": "#594238",
+                        "inverse-primary": "#ffb596",
+                        "on-error": "#ffffff",
+                        "secondary": "#1b6d24",
+                        "inverse-surface": "#33302a",
+                        "surface-container-high": "#eee7dd",
+                        "outline-variant": "#e0c0b3",
+                        "secondary-fixed": "#a3f69c",
+                        "inverse-on-surface": "#f7f0e6",
+                        "primary": "#9f3d00",
+                        "surface-bright": "#fff8f0",
+                        "on-primary": "#ffffff",
+                        "outline": "#8c7166",
+                        "on-primary-container": "#fffbff",
+                        "surface-container": "#f4ede3",
+                        "background": "#fff8f0",
+                        "surface-container-highest": "#e8e2d8",
+                        "on-secondary-fixed-variant": "#005312",
+                        "on-error-container": "#93000a",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed-dim": "#e2c0a3",
+                        "on-tertiary-container": "#fffbff",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed-variant": "#7c2e00",
+                        "surface-dim": "#e0d9d0",
+                        "on-tertiary-fixed": "#291806",
+                        "surface": "#fff8f0",
+                        "surface-tint": "#a33e00",
+                        "on-secondary-fixed": "#002204",
+                        "surface-container-low": "#faf3e9",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed": "#360f00",
+                        "tertiary-container": "#8b6f56",
+                        "on-background": "#1e1b16",
+                        "on-surface": "#1e1b16",
+                        "primary-container": "#c74e00",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed": "#ffdcbe"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px",
+                        "2xl": "1.5rem"
+                    },
+                    "spacing": {
+                        "md": "24px",
+                        "margin-mobile": "16px",
+                        "base": "8px",
+                        "xs": "4px",
+                        "gutter": "20px",
+                        "sm": "12px",
+                        "xl": "80px",
+                        "margin-desktop": "64px",
+                        "lg": "48px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["DM Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["DM Sans"],
+                        "headline-lg": ["DM Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "headline-xl": ["DM Sans"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .soft-shadow {
+            box-shadow: 0 8px 24px rgba(112, 87, 64, 0.08);
+        }
+        @keyframes toastIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-toast {
+            animation: toastIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+    </style>
+    <script src="../cart.js"></script>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-xl flex flex-col items-center">
+<!-- Toast Notification -->
+<div id="toastNotification" class="fixed top-5 right-5 z-50 hidden bg-primary text-on-primary px-4 py-3 rounded-xl shadow-lg flex items-center gap-2 font-label-md transition-all">
+    <span class="material-symbols-outlined text-sm">check_circle</span>
+    <span id="toastMessage">Item added to cart!</span>
+</div>
+
+<!-- Top App Bar -->
+<header class="w-full top-0 sticky z-40 bg-background flex justify-between items-center px-margin-mobile py-base max-w-7xl mx-auto shadow-sm transition-all duration-300">
+<div class="flex items-center gap-sm">
+<button class="text-on-surface-variant hover:bg-surface-container rounded-full p-2 transition-colors active:scale-95">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container text-sm" data-weight="fill" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md text-primary tracking-tight leading-none">Annapurna</h1>
+<span class="text-[10px] font-label-sm text-secondary block mt-0.5">Ghar ka swaad, ab har ghar tak</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-sm">
+<div onclick="const newLoc = prompt('Enter new location:', document.getElementById('locationText').textContent.trim()); if(newLoc) { document.getElementById('locationText').textContent = newLoc; }" class="hidden md:flex items-center gap-1 bg-surface-container-high px-3 py-1.5 rounded-full cursor-pointer hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-sm text-primary">location_on</span>
+<span id="locationText" class="font-label-sm text-label-sm">Pune</span>
+<span class="material-symbols-outlined text-sm">arrow_drop_down</span>
+</div>
+<button onclick="window.location.href='../shopping_cart_delivery_selection/code.html'" class="relative text-on-surface-variant hover:bg-surface-container rounded-full p-2 transition-colors active:scale-95" title="Shopping Cart">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span id="headerCartBadge" class="absolute top-1.5 right-1.5 w-4 h-4 bg-error text-on-error rounded-full text-[10px] font-bold flex items-center justify-center border-2 border-background">0</span>
+</button>
+</div>
+</header>
+<main class="w-full max-w-7xl mx-auto px-margin-mobile flex flex-col gap-md pt-sm">
+<!-- Search Bar -->
+<div class="relative w-full flex items-center gap-2">
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input id="searchInput" class="w-full pl-10 pr-10 py-3 rounded-xl bg-surface-container border-none focus:ring-2 focus:ring-primary text-on-surface-variant font-body-md placeholder:text-on-surface-variant/60 transition-all" placeholder="Search meals, pickles, snacks or kitchens..." type="text"/>
+<button id="clearSearchBtn" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant/60 hover:text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">close</span>
+</button>
+</div>
+<button class="p-3 bg-surface-container rounded-xl text-on-surface-variant hover:bg-surface-variant transition-colors" title="Filter Settings">
+<span class="material-symbols-outlined">tune</span>
+</button>
+</div>
+
+<!-- Active Filter Banner (hidden by default) -->
+<div id="activeFilterContainer" class="hidden w-full bg-secondary-container/40 border border-secondary/30 rounded-xl px-4 py-2 flex items-center justify-between">
+    <div class="flex items-center gap-2 text-secondary font-label-md">
+        <span class="material-symbols-outlined text-sm">filter_alt</span>
+        <span id="activeFilterText">Filtered by Kitchen</span>
+    </div>
+    <button id="resetFilterBtn" class="text-xs font-bold text-primary hover:underline flex items-center gap-1">
+        Clear Filter <span class="material-symbols-outlined text-xs">close</span>
+    </button>
+</div>
+
+<!-- Hero Banner -->
+<section class="relative w-full rounded-2xl overflow-hidden bg-gradient-to-br from-[#fff0e6] to-[#ffe0d1] p-md flex flex-col md:flex-row items-center gap-md soft-shadow">
+<div class="flex-1 flex flex-col gap-sm z-10">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary-fixed-variant font-bold leading-tight">Fresh Homemade Food</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-2">From trusted home kitchens to your doorstep</p>
+<div class="flex flex-col gap-2 mb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-sm">check_circle</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Hygienic &amp; Safe</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm">favorite</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Made with Love</span>
+</div>
+</div>
+<button class="bg-primary text-on-primary px-8 py-3 rounded-full font-label-md text-label-md hover:bg-primary/90 transition-colors self-start shadow-md">
+                    Order Now
+                </button>
+</div>
+<div class="w-full md:w-1/2 relative h-48 md:h-64 flex justify-end items-center right-0 mt-4 md:mt-0">
+<img alt="Traditional Thali Meal" class="w-32 h-32 md:w-48 md:h-48 rounded-full object-cover border-4 border-surface shadow-lg absolute right-4 md:right-10 z-20" src="../assets/images/thali.jpg" onerror="this.onerror=null;this.src='';this.style.background='#e8e2d8';"/>
+<img alt="Rice and Curry Bowl" class="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover border-4 border-surface shadow-md absolute right-24 md:right-48 bottom-0 z-10" src="../assets/images/curry_bowl.jpg" onerror="this.onerror=null;this.src='';this.style.background='#e8e2d8';"/>
+</div>
+</section>
+<!-- Quick Stats / Badges -->
+<div class="w-full overflow-x-auto hide-scrollbar py-2">
+<div class="flex gap-4 min-w-max px-2">
+<div class="flex flex-col items-center gap-1">
+<div class="w-12 h-12 rounded-full bg-secondary-container/30 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">health_and_safety</span>
+</div>
+<span class="font-label-sm text-[10px] text-center w-16 text-on-surface-variant leading-tight">Hygienic &amp; Safe</span>
+</div>
+<div class="flex flex-col items-center gap-1">
+<div class="w-12 h-12 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-600">
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<span class="font-label-sm text-[10px] text-center w-16 text-on-surface-variant leading-tight">Top Rated</span>
+</div>
+<div class="flex flex-col items-center gap-1">
+<div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center text-purple-600">
+<span class="material-symbols-outlined">verified_user</span>
+</div>
+<span class="font-label-sm text-[10px] text-center w-16 text-on-surface-variant leading-tight">Secure Payments</span>
+</div>
+<div class="flex flex-col items-center gap-1">
+<div class="w-12 h-12 rounded-full bg-pink-100 flex items-center justify-center text-pink-600">
+<span class="material-symbols-outlined">volunteer_activism</span>
+</div>
+<span class="font-label-sm text-[10px] text-center w-16 text-on-surface-variant leading-tight">Support Local</span>
+</div>
+<div class="flex flex-col items-center gap-1">
+<div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
+<span class="material-symbols-outlined">redeem</span>
+</div>
+<span class="font-label-sm text-[10px] text-center w-16 text-on-surface-variant leading-tight">Offers &amp; Deals</span>
+</div>
+</div>
+</div>
+
+<!-- Featured Kitchens Section -->
+<section id="kitchensSection" class="w-full flex flex-col gap-3">
+<div class="flex justify-between items-center px-1">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Explore Home Kitchens</h3>
+<p class="font-label-sm text-xs text-on-surface-variant">Click any kitchen to view their exclusive menu items</p>
+</div>
+<button id="showAllKitchensBtn" class="font-label-md text-label-md text-primary hover:underline">See All</button>
+</div>
+<div class="w-full overflow-x-auto hide-scrollbar pb-2">
+<div id="kitchensContainer" class="flex gap-4 px-1 w-max">
+    <!-- Kitchen Cards Rendered Dynamically -->
+</div>
+</div>
+</section>
+
+<!-- Popular Meals Section -->
+<section id="mealsSection" class="w-full flex flex-col gap-4">
+<div class="flex justify-between items-center px-1">
+<h3 class="font-headline-md text-headline-md text-on-surface">Popular Meals</h3>
+<span id="mealsCountBadge" class="font-label-sm text-xs bg-surface-container px-2.5 py-1 rounded-full text-on-surface-variant font-bold">0 Meals</span>
+</div>
+<div class="w-full overflow-x-auto hide-scrollbar pb-4">
+<div id="mealsContainer" class="flex gap-4 px-1 w-max">
+    <!-- Meal Cards Rendered Dynamically -->
+</div>
+</div>
+</section>
+
+<!-- Homemade Products Section -->
+<section id="productsSection" class="w-full flex flex-col gap-4">
+<div class="flex justify-between items-center px-1">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Homemade Artisanal Products</h3>
+<p class="font-label-sm text-xs text-on-surface-variant">Pickles, Papad, Masalas &amp; Snacks crafted with traditional recipes</p>
+</div>
+<span id="productsCountBadge" class="font-label-sm text-xs bg-surface-container px-2.5 py-1 rounded-full text-on-surface-variant font-bold">0 Products</span>
+</div>
+<div class="w-full overflow-x-auto hide-scrollbar pb-4">
+<div id="productsContainer" class="flex gap-4 px-1 w-max">
+    <!-- Product Cards Rendered Dynamically -->
+</div>
+</div>
+</section>
+
+<!-- No Results Found Component -->
+<div id="noResultsMessage" class="hidden w-full bg-surface border border-surface-container-highest rounded-2xl p-8 flex flex-col items-center text-center gap-3 soft-shadow my-4">
+    <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+        <span class="material-symbols-outlined text-3xl">search_off</span>
+    </div>
+    <h4 class="font-headline-md text-headline-md text-on-surface">No results found</h4>
+    <p class="font-body-md text-on-surface-variant max-w-md">We couldn't find any meals, kitchens, or homemade products matching your search term. Try searching for "Rajma", "Pickle", or "Aai".</p>
+    <button id="resetSearchBtn" class="mt-2 bg-primary text-on-primary px-6 py-2.5 rounded-full font-label-md hover:bg-primary/90 transition-colors">
+        Reset Search &amp; Filters
+    </button>
+</div>
+
+</main>
+<!-- Bottom Nav Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-sm pb-base pt-xs bg-surface dark:bg-surface-container-low shadow-[0_-4px_16px_rgba(51,48,42,0.05)] rounded-t-xl md:hidden">
+<!-- Home (Active) -->
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-sm text-label-sm mt-1">Home</span>
+</a>
+<!-- Orders -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-highest rounded-full transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-label-sm text-label-sm mt-1">Orders</span>
+</a>
+<!-- Cart -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-highest rounded-full transition-all active:scale-90 relative" href="../shopping_cart_delivery_selection/code.html">
+<span class="material-symbols-outlined">shopping_basket</span>
+<span id="navCartBadge" class="absolute top-1 right-3 w-4 h-4 bg-error text-on-error rounded-full text-[10px] font-bold flex items-center justify-center">0</span>
+<span class="font-label-sm text-label-sm mt-1">Cart</span>
+</a>
+<!-- Messages -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-highest rounded-full transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="font-label-sm text-label-sm mt-1">Messages</span>
+</a>
+<!-- Account -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-highest rounded-full transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm mt-1">Account</span>
+</a>
+</nav>
+
+<script>
+// ==========================================
+// MOCK DATA
+// ==========================================
+
+const kitchensData = [
+  {
+    id: "k1",
+    name: "Anita's Kitchen",
+    specialty: "Maharashtrian & North Indian Thalis",
+    rating: 4.8,
+    reviewsCount: 120,
+    distance: "1.2 km",
+    prepTime: "30-35 min",
+    image: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=500&q=80",
+    badge: "Featured",
+    isVeg: true
+  },
+  {
+    id: "k2",
+    name: "Sharma Niwas",
+    specialty: "Homestyle Punjabi Comfort Food",
+    rating: 4.9,
+    reviewsCount: 94,
+    distance: "2.1 km",
+    prepTime: "25-30 min",
+    image: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=500&q=80",
+    badge: "Top Rated",
+    isVeg: true
+  },
+  {
+    id: "k3",
+    name: "Aai's Kitchen",
+    specialty: "Authentic Homemade Pickles & Thalis",
+    rating: 4.9,
+    reviewsCount: 210,
+    distance: "0.8 km",
+    prepTime: "20-25 min",
+    image: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=500&q=80",
+    badge: "Heritage Recipe",
+    isVeg: true
+  },
+  {
+    id: "k4",
+    name: "Meera's South Rasoi",
+    specialty: "Authentic South Indian Breakfast",
+    rating: 4.7,
+    reviewsCount: 156,
+    distance: "1.8 km",
+    prepTime: "15-20 min",
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuB5QiJuvUOJ3s5uLjVgV7LM2HPJvuk8MCHATmFy4FlfrCMqAdPChd3er2joYZO91cj0PKUuTARiVn_f5BnzwjhSCYbjIzflHUx69ImPc_m6Efti0gbkFmqRXfUCD9Sl13O1_ZZAffvxuNfP9dKdXBGeI6nWOgydnQ7jmXa2G_yXWSPxsQvFmmKoMrzJco1GU33Qi1-dsbWGmIyJgHf7VA1K0W_hW76lsNOygYzoLv21k6ItiL_fSpJkww",
+    badge: "Fast Prep",
+    isVeg: true
+  }
+];
+
+const mealsData = [
+  {
+    id: "m1",
+    name: "Authentic Veg Thali",
+    kitchenId: "k3",
+    kitchenName: "Aai's Kitchen",
+    price: 150,
+    rating: 4.8,
+    prepTime: "30-35 min",
+    image: "https://lh3.googleusercontent.com/aida/AP1WRLtW-ZSrEB_XdmS6WOFKel35HvoiPooM8ozJmq44oqVFVu6UVraZcb1-LlcIduRe99K55tPKhedcgR4TjfFvWgwlWujazH8eurT94uCxah9hzXH9jky95FdcJ0gGFQrFFISC5garyuDGCoQhHu9jFFkpSiTUoTiMnaHhPQly5GkxRASEL6vvAuHAWvfu7a0ceyTDmh0XopaihDz17ngEwVQkgSnLR1S1HAhAGQr9Wtw-4G2ORWlm0u-0K2KA",
+    isVeg: true
+  },
+  {
+    id: "m2",
+    name: "Homestyle Rajma Chawal",
+    kitchenId: "k2",
+    kitchenName: "Sharma Niwas",
+    price: 120,
+    rating: 4.9,
+    prepTime: "25-30 min",
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuB5ThUvbElps0BWtv2yxcne9OGokNYcd52e1OwlPvC6a0_CDCmiCrvTlPJEZFyRoPnu2ZDAfeCodNqTfW51H12CHzzLjGflCKpr6QFvdc71WwfJf-5KUSooV2okwa5GAy_JFBynt6dHz351GmyLVN7WinyBqbNflkfVNfpg3O0K6fdGb-eM_O43M87m5JXTGMzNHyIf3zo6pxNVNRviX5KTZZUT-NOU9r5PHfO-IlQHne5370-wLPjFZA",
+    isVeg: true
+  },
+  {
+    id: "m3",
+    name: "Special Dal Baati Churma",
+    kitchenId: "k1",
+    kitchenName: "Anita's Kitchen",
+    price: 180,
+    rating: 4.9,
+    prepTime: "35-40 min",
+    image: "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=500&q=80",
+    isVeg: true
+  },
+  {
+    id: "m4",
+    name: "Soft Idli Sambar Plate",
+    kitchenId: "k4",
+    kitchenName: "Meera's South Rasoi",
+    price: 90,
+    rating: 4.7,
+    prepTime: "15-20 min",
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuB5QiJuvUOJ3s5uLjVgV7LM2HPJvuk8MCHATmFy4FlfrCMqAdPChd3er2joYZO91cj0PKUuTARiVn_f5BnzwjhSCYbjIzflHUx69ImPc_m6Efti0gbkFmqRXfUCD9Sl13O1_ZZAffvxuNfP9dKdXBGeI6nWOgydnQ7jmXa2G_yXWSPxsQvFmmKoMrzJco1GU33Qi1-dsbWGmIyJgHf7VA1K0W_hW76lsNOygYzoLv21k6ItiL_fSpJkww",
+    isVeg: true
+  },
+  {
+    id: "m5",
+    name: "Puran Poli with Katachi Amti",
+    kitchenId: "k3",
+    kitchenName: "Aai's Kitchen",
+    price: 160,
+    rating: 5.0,
+    prepTime: "30-35 min",
+    image: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=500&q=80",
+    isVeg: true
+  }
+];
+
+const productsData = [
+  {
+    id: "p1",
+    name: "Homemade Kacha Aam Ka Achar",
+    kitchenId: "k3",
+    kitchenName: "Aai's Kitchen",
+    price: 150,
+    rating: 4.8,
+    weight: "250g",
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDiNvbemFYzY-zjUyer-YNkqOD49UpQXZkg4nC-Y9mc3pSH8YchDpv9W5C_bqLZ3Qljo7yd1sjGKBcF_PYYK67X6_JwrwPXYXCjlNLPy2-zIfmGrK3X7uX2-R-rokqgJUKEbrw9QxE26lzStjXAKxHa3fprzAbdES3bk2bhnW_5CFOZitt-aPXcsLQdQdPwBK8rvswVscSkarHDNXSVpHYW01ZlmWNSUTcehEMsK9DxzPr6-O_AkRKR9Q",
+    category: "Pickles"
+  },
+  {
+    id: "p2",
+    name: "Khatta Meetha Lemon Pickle",
+    kitchenId: "k1",
+    kitchenName: "Anita's Kitchen",
+    price: 140,
+    rating: 4.5,
+    weight: "250g",
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBYk1_rPh1Ywdag_uqVAHkdxYH-HvGBjjF_Nudo3-YMZD5cgd55NGQyKrRqrBzEIORbDyaIfwbNddhP2_7FRmEw1p9s9MU_VaM8_yw5MGvow5WoTa1KRMfHC_4cGXQ1w_Fw8T1GIz4f_QdtvH27Y7Z78EBUbQNeLo4KA2UZsTeH8WGSj4xYz8WxMmXZRhaW_c_WjeU8Iy8LeyDmkuWgtBQtPIQWVhrH4Y5TLEPFWzaG6E73ZG1yB5yvLw",
+    category: "Pickles"
+  },
+  {
+    id: "p3",
+    name: "Crispy Urad Dal Papad",
+    kitchenId: "k2",
+    kitchenName: "Sharma Niwas",
+    price: 110,
+    rating: 4.9,
+    weight: "200g",
+    image: "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=500&q=80",
+    category: "Papad"
+  },
+  {
+    id: "p4",
+    name: "Handmade Garlic Pickle",
+    kitchenId: "k3",
+    kitchenName: "Aai's Kitchen",
+    price: 160,
+    rating: 4.9,
+    weight: "200g",
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAZsX6TkNsP20qH8yNBTQvkmQ9YY03Zoxw-Plfcosr3D6GrJAk-6UpLQZRShYapqfGg4QeRSJPpT8YcyAX_Rx2Vv7HSOjGrloc_WIJaoJFMH24iSLAWPgf_bi762ZJ4CVFD_1D8v9VuK_e3x4NUastAvEMVxDc0giIioAnI3jsNBx7_1cOLHKc8B0rYUDDanEK8n9_-zllZxvuBRRbbcUczmGPjo3Pl54D5AIHz8LWDVrwYaeHzR2pekg",
+    category: "Pickles"
+  },
+  {
+    id: "p5",
+    name: "Authentic Kolhapuri Kanda Lasun Masala",
+    kitchenId: "k1",
+    kitchenName: "Anita's Kitchen",
+    price: 130,
+    rating: 4.8,
+    weight: "250g",
+    image: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=500&q=80",
+    category: "Spices"
+  },
+  {
+    id: "p6",
+    name: "Spicy Green Chilli Pickle",
+    kitchenId: "k2",
+    kitchenName: "Sharma Niwas",
+    price: 125,
+    rating: 4.7,
+    weight: "250g",
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCD09QQ1uDu1i_xWOVq9In2PGGAzEVRVzCvoVbWb-ro6o1nQ2HR2A5fHPg2lzP0FVZYPzykYZM5XcS7oY5m72JBpjDoQSjavISbevnex7bBCdAe-nedL-Ut_masAcqmmCGf5ax6y4a_tY8tmhZT8gnxwd6G42KeKzcTIb0AZmqHfZSGW7ZGWxauVPSdZXwi0iIyLHhLku7-1VktgqbuM1ubtG5Jn5vJBgi3ObX2IBvUTelJ2SvEXNXgbg",
+    category: "Pickles"
+  }
+];
+
+// Active State
+let selectedKitchenId = null;
+
+// ==========================================
+// DOM ELEMENTS & INITIALIZATION
+// ==========================================
+
+document.addEventListener("DOMContentLoaded", () => {
+    const searchInput = document.getElementById("searchInput");
+    const clearSearchBtn = document.getElementById("clearSearchBtn");
+    const resetSearchBtn = document.getElementById("resetSearchBtn");
+    const resetFilterBtn = document.getElementById("resetFilterBtn");
+    const activeFilterContainer = document.getElementById("activeFilterContainer");
+    const activeFilterText = document.getElementById("activeFilterText");
+    
+    // Initial Render
+    renderKitchens();
+    renderMealsAndProducts();
+    updateLocalBadges();
+
+    // Search Event Listener
+    searchInput.addEventListener("input", (e) => {
+        const query = e.target.value.trim();
+        if (query.length > 0) {
+            clearSearchBtn.classList.remove("hidden");
+        } else {
+            clearSearchBtn.classList.add("hidden");
+        }
+        renderMealsAndProducts();
+    });
+
+    clearSearchBtn.addEventListener("click", () => {
+        searchInput.value = "";
+        clearSearchBtn.classList.add("hidden");
+        renderMealsAndProducts();
+        searchInput.focus();
+    });
+
+    resetSearchBtn.addEventListener("click", resetAllFilters);
+    resetFilterBtn.addEventListener("click", resetKitchenFilter);
+});
+
+// ==========================================
+// RENDERING FUNCTIONS
+// ==========================================
+
+// Render Kitchen Cards
+function renderKitchens() {
+    const kitchensContainer = document.getElementById("kitchensContainer");
+    if (!kitchensContainer) return;
+
+    kitchensContainer.innerHTML = kitchensData.map(kitchen => `
+        <div onclick="selectKitchen('${kitchen.id}')" class="cursor-pointer w-64 bg-surface-container-lowest rounded-2xl p-4 flex flex-col justify-between gap-3 shadow-[0_4px_16px_rgba(112,87,64,0.06)] border border-surface-variant hover:border-primary/50 hover:shadow-[0_8px_24px_rgba(112,87,64,0.12)] transition-all group shrink-0 ${selectedKitchenId === kitchen.id ? 'ring-2 ring-primary bg-primary/5' : ''}">
+            <div class="flex items-center gap-3">
+                <div class="w-14 h-14 rounded-xl overflow-hidden shrink-0 bg-surface-container">
+                    <img src="${kitchen.image}" alt="${kitchen.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                </div>
+                <div class="flex-1 min-w-0">
+                    <div class="flex items-center gap-1">
+                        <h4 class="font-label-md font-bold text-on-background truncate">${kitchen.name}</h4>
+                        <span class="material-symbols-outlined text-primary text-xs" style="font-variation-settings: 'FILL' 1;">verified</span>
+                    </div>
+                    <p class="text-[11px] text-on-surface-variant truncate">${kitchen.specialty}</p>
+                    <div class="flex items-center gap-2 text-[10px] text-on-surface-variant mt-1 font-medium">
+                        <span class="flex items-center text-secondary font-bold">
+                            <span class="material-symbols-outlined text-[12px] mr-0.5" style="font-variation-settings: 'FILL' 1;">star</span>${kitchen.rating}
+                        </span>
+                        <span>•</span>
+                        <span>${kitchen.distance}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center justify-between pt-2 border-t border-surface-variant/40">
+                <span class="text-[10px] font-bold text-tertiary bg-surface-container px-2 py-0.5 rounded-full flex items-center gap-1">
+                    <span class="material-symbols-outlined text-[12px]">schedule</span> ${kitchen.prepTime}
+                </span>
+                <span class="text-[11px] font-bold text-primary flex items-center group-hover:translate-x-0.5 transition-transform">
+                    View Menu <span class="material-symbols-outlined text-sm">chevron_right</span>
+                </span>
+            </div>
+        </div>
+    `).join('');
+}
+
+// Render Meals and Products filtered by search and selected kitchen
+function renderMealsAndProducts() {
+    const searchInput = document.getElementById("searchInput");
+    const query = searchInput ? searchInput.value.toLowerCase().trim() : "";
+
+    const mealsContainer = document.getElementById("mealsContainer");
+    const productsContainer = document.getElementById("productsContainer");
+    const noResultsMessage = document.getElementById("noResultsMessage");
+    const mealsSection = document.getElementById("mealsSection");
+    const productsSection = document.getElementById("productsSection");
+    const mealsCountBadge = document.getElementById("mealsCountBadge");
+    const productsCountBadge = document.getElementById("productsCountBadge");
+    const activeFilterContainer = document.getElementById("activeFilterContainer");
+    const activeFilterText = document.getElementById("activeFilterText");
+
+    // Update Active Filter Banner
+    if (selectedKitchenId) {
+        const kitchen = kitchensData.find(k => k.id === selectedKitchenId);
+        activeFilterText.textContent = `Showing items exclusively from "${kitchen ? kitchen.name : ''}"`;
+        activeFilterContainer.classList.remove("hidden");
+    } else {
+        activeFilterContainer.classList.add("hidden");
+    }
+
+    // Filter Meals
+    const filteredMeals = mealsData.filter(meal => {
+        const matchesKitchen = !selectedKitchenId || meal.kitchenId === selectedKitchenId;
+        const matchesSearch = !query || 
+            meal.name.toLowerCase().includes(query) || 
+            meal.kitchenName.toLowerCase().includes(query);
+        return matchesKitchen && matchesSearch;
+    });
+
+    // Filter Products
+    const filteredProducts = productsData.filter(product => {
+        const matchesKitchen = !selectedKitchenId || product.kitchenId === selectedKitchenId;
+        const matchesSearch = !query || 
+            product.name.toLowerCase().includes(query) || 
+            product.kitchenName.toLowerCase().includes(query) ||
+            product.category.toLowerCase().includes(query);
+        return matchesKitchen && matchesSearch;
+    });
+
+    // Update Count Badges
+    if (mealsCountBadge) mealsCountBadge.textContent = `${filteredMeals.length} Meals`;
+    if (productsCountBadge) productsCountBadge.textContent = `${filteredProducts.length} Products`;
+
+    // Check Empty State
+    if (filteredMeals.length === 0 && filteredProducts.length === 0) {
+        mealsSection.classList.add("hidden");
+        productsSection.classList.add("hidden");
+        noResultsMessage.classList.remove("hidden");
+        return;
+    } else {
+        noResultsMessage.classList.add("hidden");
+    }
+
+    // Render Meals
+    if (filteredMeals.length > 0) {
+        mealsSection.classList.remove("hidden");
+        mealsContainer.innerHTML = filteredMeals.map(meal => `
+            <div class="w-64 bg-surface rounded-2xl overflow-hidden soft-shadow border border-surface-container-highest flex flex-col justify-between shrink-0">
+                <div class="relative h-40">
+                    <img src="${meal.image}" alt="${meal.name}" class="w-full h-full object-cover" />
+                    <button onclick="event.stopPropagation(); toggleFavorite('${meal.id}')" id="fav-btn-${meal.id}" class="absolute top-2 right-2 w-8 h-8 bg-surface/80 backdrop-blur-sm rounded-full flex items-center justify-center transition-colors ${isFav(meal.id) ? 'text-error' : 'text-on-surface-variant hover:text-error'}">
+                        <span class="material-symbols-outlined text-sm" id="fav-icon-${meal.id}" style="font-variation-settings: 'FILL' ${isFav(meal.id) ? 1 : 0};">favorite</span>
+                    </button>
+                    ${meal.isVeg ? `
+                        <span class="absolute top-2 left-2 bg-secondary-container/90 text-on-secondary-container px-2 py-0.5 rounded-full text-[9px] font-bold border border-secondary/20 flex items-center gap-0.5">
+                            <span class="material-symbols-outlined text-[10px]">spa</span> Veg
+                        </span>
+                    ` : ''}
+                </div>
+                <div class="p-4 flex flex-col gap-2 flex-1 justify-between">
+                    <div>
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h4 class="font-label-md text-label-md text-on-surface font-bold line-clamp-1">${meal.name}</h4>
+                                <p onclick="selectKitchen('${meal.kitchenId}')" class="font-label-sm text-label-sm text-primary hover:underline cursor-pointer font-medium">${meal.kitchenName}</p>
+                            </div>
+                            <div class="flex items-center gap-1 bg-surface-container px-1.5 py-0.5 rounded text-[10px] font-bold text-on-surface-variant shrink-0">
+                                <span class="material-symbols-outlined text-[12px] text-yellow-500" style="font-variation-settings: 'FILL' 1;">star</span>
+                                ${meal.rating}
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2 font-label-sm text-label-sm text-on-surface-variant/80 mt-2">
+                            <span class="material-symbols-outlined text-[14px]">schedule</span> ${meal.prepTime}
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center mt-3 pt-2 border-t border-surface-container-highest">
+                        <span class="font-headline-md text-[18px] text-primary font-bold">₹${meal.price}</span>
+                        <button onclick="addToCart('${meal.id}', 'meal')" class="bg-primary/10 text-primary hover:bg-primary hover:text-on-primary px-3.5 py-1.5 rounded-lg font-label-md text-label-md transition-all flex items-center gap-1 active:scale-95">
+                            Add <span class="material-symbols-outlined text-[16px]">add</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+    } else {
+        mealsSection.classList.add("hidden");
+    }
+
+    // Render Products
+    if (filteredProducts.length > 0) {
+        productsSection.classList.remove("hidden");
+        productsContainer.innerHTML = filteredProducts.map(product => `
+            <div class="w-64 bg-surface rounded-2xl overflow-hidden soft-shadow border border-surface-container-highest flex flex-col justify-between shrink-0">
+                <div class="relative h-40 bg-surface-container-high">
+                    <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover" />
+                    <span class="absolute top-2 left-2 bg-surface/90 backdrop-blur-sm text-on-surface-variant px-2 py-0.5 rounded-full text-[9px] font-bold border border-outline-variant/40">
+                        ${product.category}
+                    </span>
+                    <button onclick="event.stopPropagation(); toggleFavorite('${product.id}')" id="fav-btn-${product.id}" class="absolute top-2 right-2 w-8 h-8 bg-surface/80 backdrop-blur-sm rounded-full flex items-center justify-center transition-colors ${isFav(product.id) ? 'text-error' : 'text-on-surface-variant hover:text-error'}">
+                        <span class="material-symbols-outlined text-sm" id="fav-icon-${product.id}" style="font-variation-settings: 'FILL' ${isFav(product.id) ? 1 : 0};">favorite</span>
+                    </button>
+                </div>
+                <div class="p-4 flex flex-col gap-2 flex-1 justify-between">
+                    <div>
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h4 class="font-label-md text-label-md text-on-surface font-bold line-clamp-1">${product.name}</h4>
+                                <p onclick="selectKitchen('${product.kitchenId}')" class="font-label-sm text-label-sm text-primary hover:underline cursor-pointer font-medium">${product.kitchenName}</p>
+                            </div>
+                            <div class="flex items-center gap-1 bg-surface-container px-1.5 py-0.5 rounded text-[10px] font-bold text-on-surface-variant shrink-0">
+                                <span class="material-symbols-outlined text-[12px] text-yellow-500" style="font-variation-settings: 'FILL' 1;">star</span>
+                                ${product.rating}
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-1 font-label-sm text-xs text-on-surface-variant/80 mt-2">
+                            <span class="material-symbols-outlined text-[14px]">scale</span> ${product.weight}
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center mt-3 pt-2 border-t border-surface-container-highest">
+                        <span class="font-headline-md text-[18px] text-primary font-bold">₹${product.price}</span>
+                        <button onclick="addToCart('${product.id}', 'product')" class="bg-primary/10 text-primary hover:bg-primary hover:text-on-primary px-3.5 py-1.5 rounded-lg font-label-md text-label-md transition-all flex items-center gap-1 active:scale-95">
+                            Add <span class="material-symbols-outlined text-[16px]">add</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+    } else {
+        productsSection.classList.add("hidden");
+    }
+}
+
+// ==========================================
+// INTERACTION & FILTER LOGIC
+// ==========================================
+
+function selectKitchen(kitchenId) {
+    window.location.href = `../anita_s_kitchen_customization/code.html?kitchenId=${kitchenId}`;
+}
+
+function resetKitchenFilter() {
+    selectedKitchenId = null;
+    renderKitchens();
+    renderMealsAndProducts();
+}
+
+function resetAllFilters() {
+    selectedKitchenId = null;
+    const searchInput = document.getElementById("searchInput");
+    const clearSearchBtn = document.getElementById("clearSearchBtn");
+    if (searchInput) searchInput.value = "";
+    if (clearSearchBtn) clearSearchBtn.classList.add("hidden");
+    renderKitchens();
+    renderMealsAndProducts();
+}
+
+// ==========================================
+// FAVORITES LOGIC
+// ==========================================
+
+function getFavorites() {
+    try {
+        const raw = localStorage.getItem('annapurna_favorites');
+        return raw ? JSON.parse(raw) : [];
+    } catch(e) { return []; }
+}
+
+function isFav(itemId) {
+    return getFavorites().includes(itemId);
+}
+
+function toggleFavorite(itemId) {
+    let favs = getFavorites();
+    const idx = favs.indexOf(itemId);
+    if (idx === -1) {
+        favs.push(itemId);
+        showToast('Added to Favorites ❤️');
+    } else {
+        favs.splice(idx, 1);
+        showToast('Removed from Favorites');
+    }
+    localStorage.setItem('annapurna_favorites', JSON.stringify(favs));
+
+    // Update icon fill state in-place without full re-render
+    const icon = document.getElementById('fav-icon-' + itemId);
+    if (icon) {
+        icon.style.fontVariationSettings = `'FILL' ${favs.includes(itemId) ? 1 : 0}`;
+        icon.closest('button').classList.toggle('text-error', favs.includes(itemId));
+    }
+}
+
+// ==========================================
+// CART LOGIC
+// ==========================================
+
+function updateLocalBadges() {
+    if (typeof AnnapurnaCart === 'undefined') return;
+    const items = AnnapurnaCart.getItems();
+    const count = items.reduce((acc, item) => acc + (item.quantity || 1), 0);
+    const badges = [document.getElementById('headerCartBadge'), document.getElementById('navCartBadge')];
+    badges.forEach(badge => {
+        if (badge) {
+            if (count > 0) {
+                badge.textContent = count > 99 ? '99+' : count;
+                badge.classList.remove('hidden');
+            } else {
+                badge.textContent = '0';
+                badge.classList.add('hidden');
+            }
+        }
+    });
+}
+
+function addToCart(itemId, type) {
+    let itemToAdd = null;
+    if (type === 'meal') {
+        itemToAdd = mealsData.find(m => m.id === itemId);
+    } else if (type === 'product') {
+        itemToAdd = productsData.find(p => p.id === itemId);
+    }
+
+    if (!itemToAdd) return;
+
+    if (typeof AnnapurnaCart !== 'undefined') {
+        AnnapurnaCart.addItem({ ...itemToAdd, quantity: 1, type: type });
+        updateLocalBadges();
+    }
+    showToast(`Added "${itemToAdd.name}" to cart!`);
+}
+
+function showToast(message) {
+    const toast = document.getElementById("toastNotification");
+    const toastMessage = document.getElementById("toastMessage");
+    if (!toast || !toastMessage) return;
+
+    toastMessage.textContent = message;
+    toast.classList.remove("hidden");
+    toast.classList.add("animate-toast");
+
+    setTimeout(() => {
+        toast.classList.add("hidden");
+        toast.classList.remove("animate-toast");
+    }, 2500);
+}
+</script>
+</body></html>
