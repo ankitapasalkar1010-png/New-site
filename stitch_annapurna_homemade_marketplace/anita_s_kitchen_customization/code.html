@@ -1,0 +1,494 @@
+﻿<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Anita Kitchen - Menu</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400..800&amp;family=Plus+Jakarta+Sans:wght@400..700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-container": "#a0f399",
+                      "outline": "#8c7166",
+                      "on-secondary": "#ffffff",
+                      "on-surface-variant": "#594238",
+                      "primary-fixed-dim": "#ffb596",
+                      "on-tertiary-container": "#fffbff",
+                      "primary-container": "#c74e00",
+                      "error": "#ba1a1a",
+                      "surface-container": "#f4ede3",
+                      "inverse-surface": "#33302a",
+                      "tertiary-fixed": "#ffdcbe",
+                      "surface": "#fff8f0",
+                      "on-error-container": "#93000a",
+                      "surface-container-lowest": "#ffffff",
+                      "primary": "#9f3d00",
+                      "on-primary-fixed": "#360f00",
+                      "tertiary-fixed-dim": "#e2c0a3",
+                      "tertiary-container": "#8b6f56",
+                      "on-background": "#1e1b16",
+                      "on-surface": "#1e1b16",
+                      "on-error": "#ffffff",
+                      "outline-variant": "#e0c0b3",
+                      "on-primary": "#ffffff",
+                      "primary-fixed": "#ffdbcd",
+                      "inverse-on-surface": "#f7f0e6",
+                      "on-primary-fixed-variant": "#7c2e00",
+                      "on-tertiary-fixed-variant": "#59422c",
+                      "surface-dim": "#e0d9d0",
+                      "background": "#fff8f0",
+                      "inverse-primary": "#ffb596",
+                      "on-secondary-container": "#217128",
+                      "surface-container-low": "#faf3e9",
+                      "surface-variant": "#e8e2d8",
+                      "surface-container-highest": "#e8e2d8",
+                      "on-secondary-fixed-variant": "#005312",
+                      "surface-bright": "#fff8f0",
+                      "on-primary-container": "#fffbff",
+                      "on-tertiary": "#ffffff",
+                      "secondary": "#1b6d24",
+                      "on-secondary-fixed": "#002204",
+                      "secondary-fixed": "#a3f69c",
+                      "surface-container-high": "#eee7dd",
+                      "on-tertiary-fixed": "#291806",
+                      "secondary-fixed-dim": "#88d982",
+                      "error-container": "#ffdad6",
+                      "tertiary": "#705740",
+                      "surface-tint": "#a33e00"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "md": "24px",
+                      "base": "8px",
+                      "xs": "4px",
+                      "xl": "80px",
+                      "lg": "48px",
+                      "margin-mobile": "16px",
+                      "sm": "12px",
+                      "gutter": "20px",
+                      "margin-desktop": "64px"
+              },
+              "fontFamily": {
+                      "body-lg": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "body-md": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "headline-xl": [
+                              "DM Sans"
+                      ],
+                      "headline-md": [
+                              "DM Sans"
+                      ],
+                      "label-md": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "label-sm": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "headline-lg": [
+                              "DM Sans"
+                      ],
+                      "headline-lg-mobile": [
+                              "DM Sans"
+                      ]
+              },
+              "fontSize": {
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-xl": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "28px",
+                              {
+                                      "lineHeight": "36px",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            font-family: 'Material Symbols Outlined';
+            font-size: 24px;
+            line-height: 1;
+            display: inline-block;
+            text-transform: none;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+        }
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+        }
+        
+        /* Utility class to help with bottom spacing considering nav bar and sticky CTA */
+        .content-padding-bottom {
+            padding-bottom: calc(80px + 72px); /* Bottom nav + Sticky CTA approx height */
+        }
+    </style>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            font-family: 'Material Symbols Outlined';
+            font-size: 24px;
+            line-height: 1;
+            display: inline-block;
+            text-transform: none;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+        }
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+      <script src="../cart.js"></script>
+</head>
+<body class="antialiased min-h-screen pb-24 md:pb-0 font-body-md text-body-md text-on-background bg-background">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky bg-background dark:bg-background z-40">
+<div class="flex justify-between items-center px-margin-mobile py-base w-full max-w-7xl mx-auto">
+<button id="backBtn" class="text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container dark:hover:bg-surface-container transition-colors active:scale-95 transition-transform p-2 rounded-full" title="Go Back">
+<span class="material-symbols-outlined" data-icon="arrow_back" data-weight="regular">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md text-primary dark:text-inverse-primary tracking-tight">Anita Kitchen</h1>
+<div class="flex gap-2">
+<button class="text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container dark:hover:bg-surface-container transition-colors active:scale-95 transition-transform p-2 rounded-full">
+<span class="material-symbols-outlined" data-icon="favorite" data-weight="regular">favorite</span>
+</button>
+<button class="text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container dark:hover:bg-surface-container transition-colors active:scale-95 transition-transform p-2 rounded-full">
+<span class="material-symbols-outlined" data-icon="more_vert" data-weight="regular">more_vert</span>
+</button>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop content-padding-bottom">
+<!-- Tabs -->
+<nav class="flex border-b border-surface-variant mb-6">
+<button class="flex-1 py-4 text-center font-label-md text-label-md text-primary border-b-2 border-primary font-semibold">Menu</button>
+<button class="flex-1 py-4 text-center font-label-md text-label-md text-on-surface-variant">Reviews (120)</button>
+<button class="flex-1 py-4 text-center font-label-md text-label-md text-on-surface-variant">Info</button>
+</nav>
+<!-- Promo Card -->
+<div class="bg-surface-container-high rounded-xl p-md mb-lg shadow-[0_4px_24px_rgba(139,111,86,0.08)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+<div class="flex items-start gap-4">
+<div class="bg-tertiary-fixed p-3 rounded-full flex-shrink-0">
+<span class="material-symbols-outlined text-tertiary font-[FILL_1]" data-icon="workspace_premium" data-weight="fill">workspace_premium</span>
+</div>
+<div>
+<h3 class="font-label-md text-label-md text-on-surface mb-1">Want the complete experience?</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Choose our Full Course Meal</p>
+</div>
+</div>
+<div class="flex flex-col items-center sm:items-end w-full sm:w-auto">
+<button onclick="if(typeof AnnapurnaCart !== 'undefined') { AnnapurnaCart.addItem({id:'full-course', name:'Full Course Meal', price:400, quantity:1, type:'meal', image:'https://via.placeholder.com/80'}); updateTotals(); alert('Full Course Meal added to cart!'); }" class="w-full sm:w-auto px-6 py-3 rounded-full border-2 border-primary text-primary font-label-md text-label-md hover:bg-primary/5 transition-colors active:scale-95 mb-1">
+                    Select Full Course
+                </button>
+<span class="font-label-sm text-label-sm text-secondary">Save ₹40</span>
+</div>
+</div>
+<!-- Menu Section Header -->
+<div class="mb-6">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-1 inline-block border-b-4 border-primary pb-1">Customize Your Meal</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Select individual items to create your perfect thali</p>
+</div>
+<!-- Menu Items List -->
+<div class="space-y-4">
+<!-- Item 1: Dal Fry -->
+<div class="bg-surface-container-lowest rounded-2xl p-4 shadow-[0_4px_16px_rgba(139,111,86,0.05)] flex gap-4 items-center" data-item-id="dal-fry">
+<img alt="Dal Fry" class="w-24 h-24 rounded-xl object-cover shadow-sm flex-shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0T1xpVX4tu33e1VvFexASals7oS6cT4KhyMbx6v8OSwGMQKiYJTw7Gl_RiBuYX8njNaT6kEEX0LOJU4ngamS509AXPc74sLgbyurM8q6rB1Bx2g8FHzBuHvZHMo0d9jotS1NpJmE5GgD6-M801ZZ77e4LfmakrVIMfGInCHYpfS1uat_cOx9nEOd22JyodenlIpT-kzT-8R-078HWhcTEdMg03YEFYFYNrDUU6H0O3jiZBArTuxaGiw"/>
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="eco" data-weight="regular">eco</span>
+<span class="font-label-sm text-label-sm text-secondary bg-secondary-container px-2 py-0.5 rounded-full">Pure Veg</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface text-lg">Dal Fry</h3>
+<p class="font-label-md text-label-md text-on-surface-variant mt-1">₹50</p>
+</div>
+<div class="flex items-center bg-surface-container rounded-full border border-surface-variant shadow-sm px-1 py-1">
+<button onclick="changeQuantity('dal-fry', -1)" class="p-1 rounded-full text-on-surface-variant hover:bg-surface-variant active:scale-95 transition-all"><span class="material-symbols-outlined text-sm" data-icon="remove">remove</span></button>
+<span id="qty-dal-fry" class="font-label-md text-label-md px-3 min-w-[2ch] text-center">0</span>
+<button onclick="changeQuantity('dal-fry', 1)" class="p-1 rounded-full text-primary hover:bg-primary-fixed active:scale-95 transition-all"><span class="material-symbols-outlined text-sm" data-icon="add">add</span></button>
+</div>
+</div>
+<!-- Item 2: Veg Pulao -->
+<div class="bg-surface-container-lowest rounded-2xl p-4 shadow-[0_4px_16px_rgba(139,111,86,0.05)] flex gap-4 items-center" data-item-id="veg-pulao">
+<img alt="Veg Pulao" class="w-24 h-24 rounded-xl object-cover shadow-sm flex-shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgH7qt81f2CoFMCxod8Ono9eonEsBEJp2VC-xaB5cOwQ9rrXcBfqvALotSnG2Cojl_47iNQRhVaL9_DPPzgOnn7MarUaspglYXSUqhvFylIl78KNLDKFlo2OZblBddk6VMuqqXZJ5FN3KG6IoVLHQVPkQRkvq9sMmPuTRZ-1l0jHHeYRo09xRwrU6RLGe_RsDkUO0Wa150SvSqHr3exhOeFMxb4Lr93kdROlnTDXpK78WjpKEmOo_vFQ"/>
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="eco" data-weight="regular">eco</span>
+<span class="font-label-sm text-label-sm text-secondary bg-secondary-container px-2 py-0.5 rounded-full">Pure Veg</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface text-lg">Veg Pulao</h3>
+<p class="font-label-md text-label-md text-on-surface-variant mt-1">₹90</p>
+</div>
+<div class="flex items-center bg-surface-container rounded-full border border-surface-variant shadow-sm px-1 py-1">
+<button onclick="changeQuantity('veg-pulao', -1)" class="p-1 rounded-full text-on-surface-variant hover:bg-surface-variant active:scale-95 transition-all"><span class="material-symbols-outlined text-sm" data-icon="remove">remove</span></button>
+<span id="qty-veg-pulao" class="font-label-md text-label-md px-3 min-w-[2ch] text-center">0</span>
+<button onclick="changeQuantity('veg-pulao', 1)" class="p-1 rounded-full text-primary hover:bg-primary-fixed active:scale-95 transition-all"><span class="material-symbols-outlined text-sm" data-icon="add">add</span></button>
+</div>
+</div>
+<!-- Item 3: Paneer Curry -->
+<div class="bg-surface-container-lowest rounded-2xl p-4 shadow-[0_4px_16px_rgba(139,111,86,0.05)] flex gap-4 items-center" data-item-id="paneer-curry">
+<img alt="Paneer Curry" class="w-24 h-24 rounded-xl object-cover shadow-sm flex-shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwE2VwFPONc61dWPp5FhpkVEZFFoMSSOAJR49bcKVYZj1gnF5Xht4awQqxCKKQfn9dMRI7FUZLHB4DHC2MK9YpEz4wICDtuj6bCOaQQMp3vq6mogZoyZgBOnHLxPlJ4_hagvven9qExhcd0vJv-019xaNLdfgGGF9GHZjhKV_nEeV1TXI2uaF8qQ258unVe3DK6EEhzOQKRkNJkJVeKos7oat113ebFqjnK_F7bY8jgRglmqGq1G-jmA"/>
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="eco" data-weight="regular">eco</span>
+<span class="font-label-sm text-label-sm text-secondary bg-secondary-container px-2 py-0.5 rounded-full">Pure Veg</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface text-lg">Paneer Curry</h3>
+<p class="font-label-md text-label-md text-on-surface-variant mt-1">₹120</p>
+</div>
+<div class="flex items-center bg-surface-container rounded-full border border-surface-variant shadow-sm px-1 py-1">
+<button onclick="changeQuantity('paneer-curry', -1)" class="p-1 rounded-full text-on-surface-variant hover:bg-surface-variant active:scale-95 transition-all"><span class="material-symbols-outlined text-sm" data-icon="remove">remove</span></button>
+<span id="qty-paneer-curry" class="font-label-md text-label-md px-3 min-w-[2ch] text-center">0</span>
+<button onclick="changeQuantity('paneer-curry', 1)" class="p-1 rounded-full text-primary hover:bg-primary-fixed active:scale-95 transition-all"><span class="material-symbols-outlined text-sm" data-icon="add">add</span></button>
+</div>
+</div>
+<!-- Item 4: Chapati -->
+<div class="bg-surface-container-lowest rounded-2xl p-4 shadow-[0_4px_16px_rgba(139,111,86,0.05)] flex gap-4 items-center" data-item-id="chapati">
+<img alt="Chapati" class="w-24 h-24 rounded-xl object-cover shadow-sm flex-shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDiD-7J2SPeJ5nbDkujxTWf9GoodCTyIo56EIZ7JqYW7lAx8ktAQOhsNsUhCp0H8g04IUWgn_ZzVm7qQicjf7Vxu8iPQ59QEeNYwXZdSL8J5hDbQ2mp8oMaoSj4p9YvW5-iOf1pxVmdLVmV8AJU2JcNqLrroPHAC5iOEwtu_ZbeUf1Zk581mX7poM86TEJ6Eav87vgQ7KVECyrTP9StvqvXSPJeM62b5jXcKB5--GdsNr6rYv2jYPrWKw"/>
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="eco" data-weight="regular">eco</span>
+<span class="font-label-sm text-label-sm text-secondary bg-secondary-container px-2 py-0.5 rounded-full">Pure Veg</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface text-lg">Chapati (2 pcs)</h3>
+<p class="font-label-md text-label-md text-on-surface-variant mt-1">₹30</p>
+</div>
+<div class="flex items-center bg-surface-container rounded-full border border-surface-variant shadow-sm px-1 py-1">
+<button onclick="changeQuantity('chapati', -1)" class="p-1 rounded-full text-on-surface-variant hover:bg-surface-variant active:scale-95 transition-all"><span class="material-symbols-outlined text-sm" data-icon="remove">remove</span></button>
+<span id="qty-chapati" class="font-label-md text-label-md px-3 min-w-[2ch] text-center">0</span>
+<button onclick="changeQuantity('chapati', 1)" class="p-1 rounded-full text-primary hover:bg-primary-fixed active:scale-95 transition-all"><span class="material-symbols-outlined text-sm" data-icon="add">add</span></button>
+</div>
+</div>
+<!-- Item 5: Rice -->
+<div class="bg-surface-container-lowest rounded-2xl p-4 shadow-[0_4px_16px_rgba(139,111,86,0.05)] flex gap-4 items-center" data-item-id="rice">
+<img alt="Rice" class="w-24 h-24 rounded-xl object-cover shadow-sm flex-shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyRY9ol4mzfv_pJLO0y7boYD6lHjr9dVNGfIYEsB5Bg2bGqSItgudB60XgCyA2I_zd5jQUAWunl7RMulS7wHC_cDpKw0rubzlaVoZKZSVck0wi7pxBa7XV8FBg7Bgk92dZo7pyWeoseg_djj9dSeCp5lgg4yWcztu_KcNKMszrkTEvaklwr4wK38K8K0pbYaA594NwdjtFODV0lpUEPbTuOcMCvZbpp0Do5z3eeA4hCV6zdKcvgK8oFQ"/>
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="eco" data-weight="regular">eco</span>
+<span class="font-label-sm text-label-sm text-secondary bg-secondary-container px-2 py-0.5 rounded-full">Pure Veg</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface text-lg">Rice</h3>
+<p class="font-label-md text-label-md text-on-surface-variant mt-1">₹80</p>
+</div>
+<div class="flex items-center bg-surface-container rounded-full border border-surface-variant shadow-sm px-1 py-1">
+<button onclick="changeQuantity('rice', -1)" class="p-1 rounded-full text-on-surface-variant hover:bg-surface-variant active:scale-95 transition-all"><span class="material-symbols-outlined text-sm" data-icon="remove">remove</span></button>
+<span id="qty-rice" class="font-label-md text-label-md px-3 min-w-[2ch] text-center">0</span>
+<button onclick="changeQuantity('rice', 1)" class="p-1 rounded-full text-primary hover:bg-primary-fixed active:scale-95 transition-all"><span class="material-symbols-outlined text-sm" data-icon="add">add</span></button>
+</div>
+</div>
+</div>
+</main>
+<!-- Sticky Summary & CTA -->
+<div class="fixed bottom-[72px] md:bottom-0 left-0 w-full z-40 px-margin-mobile pb-4 pt-2 pointer-events-none">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row gap-2 justify-end pointer-events-auto">
+<!-- Summary Bubble -->
+<div class="bg-surface-container-high rounded-full px-6 py-2 shadow-[0_4px_16px_rgba(139,111,86,0.1)] flex justify-between items-center self-end md:self-auto w-full md:w-auto">
+<span id="selectionCount" class="font-label-sm text-label-sm text-on-surface-variant">Your Selection · 0 items</span>
+<span id="totalBubblePrice" class="font-label-md text-label-md text-on-surface font-bold ml-4">Total ₹0</span>
+</div>
+<!-- CTA Button -->
+<button id="viewCartBtn" class="bg-primary text-on-primary rounded-full px-8 py-3 shadow-[0_8px_24px_rgba(199,78,0,0.25)] flex items-center justify-center gap-2 hover:bg-primary-container hover:text-on-primary-container active:scale-95 transition-all self-end md:self-auto w-full md:w-auto">
+<span class="material-symbols-outlined text-[20px]" data-icon="shopping_bag">shopping_bag</span>
+<span id="viewCartBtnText" class="font-label-md text-label-md font-bold">View Cart · ₹0</span>
+<span class="material-symbols-outlined text-[20px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-sm pb-base pt-xs bg-surface dark:bg-surface-container-low shadow-[0_-4px_24px_rgba(51,48,42,0.08)] rounded-t-xl md:hidden">
+<a href="../annapurna_home_screen/code.html" class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:bg-surface-container-highest dark:hover:bg-surface-container-high rounded-full transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined mb-1" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<button class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary-container text-on-primary-container rounded-full px-4 py-1 hover:bg-surface-container-highest dark:hover:bg-surface-container-high transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined mb-1" data-icon="receipt_long" data-weight="fill">receipt_long</span>
+<span class="font-label-sm text-label-sm">Orders</span>
+</button>
+<a href="../shopping_cart_delivery_selection/code.html" class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:bg-surface-container-highest dark:hover:bg-surface-container-high rounded-full transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined mb-1" data-icon="shopping_basket">shopping_basket</span>
+<span class="font-label-sm text-label-sm">Cart</span>
+</a>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:bg-surface-container-highest dark:hover:bg-surface-container-high rounded-full transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined mb-1" data-icon="chat_bubble">chat_bubble</span>
+<span class="font-label-sm text-label-sm">Messages</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:bg-surface-container-highest dark:hover:bg-surface-container-high rounded-full transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined mb-1" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm">Account</span>
+</button>
+</nav>
+
+<script>
+// ==========================================
+// MOCK DATA
+// ==========================================
+const menuItems = [
+  { id: "dal-fry", name: "Dal Fry", price: 50, quantity: 0 },
+  { id: "veg-pulao", name: "Veg Pulao", price: 90, quantity: 0 },
+  { id: "paneer-curry", name: "Paneer Curry", price: 120, quantity: 0 },
+  { id: "chapati", name: "Chapati (2 pcs)", price: 30, quantity: 0 },
+  { id: "rice", name: "Rice", price: 80, quantity: 0 }
+];
+
+// ==========================================
+// CALCULATIONS & UI UPDATES
+// ==========================================
+
+function updateTotals() {
+  if (typeof AnnapurnaCart === 'undefined') return;
+  const items = AnnapurnaCart.getItems();
+  
+  let totalItems = 0;
+  let totalPrice = 0;
+
+  // Sync menuItems quantities with AnnapurnaCart
+  menuItems.forEach(item => {
+    const cartItem = items.find(i => i.id === item.id);
+    item.quantity = cartItem ? cartItem.quantity : 0;
+    
+    // Update individual item count in UI
+    const qtySpan = document.getElementById(`qty-${item.id}`);
+    if (qtySpan) {
+      qtySpan.textContent = item.quantity;
+    }
+  });
+
+  totalItems = items.reduce((acc, item) => acc + (item.quantity || 1), 0);
+  totalPrice = AnnapurnaCart.getTotal();
+
+  // Update summary bubble and view cart button
+  const selectionCount = document.getElementById("selectionCount");
+  const totalBubblePrice = document.getElementById("totalBubblePrice");
+  const viewCartBtnText = document.getElementById("viewCartBtnText");
+
+  if (selectionCount) selectionCount.textContent = `Your Selection · ${totalItems} item${totalItems === 1 ? '' : 's'}`;
+  if (totalBubblePrice) totalBubblePrice.textContent = `Total ₹${totalPrice}`;
+  if (viewCartBtnText) viewCartBtnText.textContent = `View Cart · ₹${totalPrice}`;
+}
+
+function changeQuantity(itemId, delta) {
+  const item = menuItems.find(i => i.id === itemId);
+  if (!item) return;
+
+  if (typeof AnnapurnaCart !== 'undefined') {
+      if (delta > 0) {
+          AnnapurnaCart.addItem({
+              id: item.id,
+              name: item.name,
+              price: item.price,
+              image: 'https://via.placeholder.com/80', // In a real app we'd get the actual image
+              quantity: 1,
+              type: 'meal'
+          });
+      } else {
+          AnnapurnaCart.updateQuantity(item.id, delta);
+      }
+      updateTotals();
+  }
+}
+
+// ==========================================
+// DOM INITIALIZATION & NAVIGATION
+// ==========================================
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Back button navigation
+  const backBtn = document.getElementById("backBtn");
+  if (backBtn) {
+    backBtn.addEventListener("click", () => {
+      if (window.history.length > 1) {
+        window.history.back();
+      } else {
+        window.location.href = "../annapurna_home_screen/code.html";
+      }
+    });
+  }
+
+  // View Cart button navigation
+  const viewCartBtn = document.getElementById("viewCartBtn");
+  if (viewCartBtn) {
+    viewCartBtn.addEventListener("click", () => {
+      const selectedItems = menuItems.filter(i => i.quantity > 0);
+      console.log("Selected Cart Items:", selectedItems);
+      // Navigate to cart page
+      window.location.href = "../shopping_cart_delivery_selection/code.html";
+    });
+  }
+
+  // Perform initial calculation
+  updateTotals();
+});
+</script>
+</body></html>
