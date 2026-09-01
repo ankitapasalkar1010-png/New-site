@@ -1,0 +1,63 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"
+     role="img" aria-labelledby="annapurna-logo-title">
+
+  <title id="annapurna-logo-title">Annapurna Logo</title>
+
+  <!--
+    CSS custom properties default to the project's Tailwind theme tokens:
+      --annapurna-primary   → 'primary'   (#9f3d00)
+      --annapurna-secondary → 'secondary' (#1b6d24)
+    A parent page can override these on the <svg> element or any ancestor
+    to keep the logo in sync if the brand palette changes.
+  -->
+  <style>
+    svg {
+      --annapurna-primary:   #9f3d00; /* Tailwind token: primary   */
+      --annapurna-secondary: #1b6d24; /* Tailwind token: secondary  */
+    }
+  </style>
+
+  <!-- Steam Lines -->
+  <path d="M85,40 Q90,30 85,20 M100,35 Q105,25 100,15 M115,40 Q120,30 115,20"
+        stroke="var(--annapurna-primary)" stroke-width="4" stroke-linecap="round"
+        fill="none" opacity="0.8" />
+
+  <!-- Green Leaves — explicit Z closes each sub-path -->
+  <path d="M40,140 Q30,100 80,90 Q70,130 40,140 Z"   fill="var(--annapurna-secondary)" />
+  <path d="M160,140 Q170,100 120,90 Q130,130 160,140 Z" fill="var(--annapurna-secondary)" />
+
+  <!-- Clay Pot (Matka) — explicit Z closes the outline -->
+  <path d="M65,70 L135,70 Q160,70 160,110 Q160,160 100,160 Q40,160 40,110 Q40,70 65,70 Z"
+        fill="var(--annapurna-primary)" />
+  <rect x="75" y="60" width="50" height="10" rx="2" fill="var(--annapurna-primary)" />
+
+  <!--
+    Heart Cutout — rebuilt with two r=9 arcs + cubic-bézier sides.
+
+    Geometry (all distances verified < arc diameter):
+      Left  circle: center (92,119) r=9  rightmost edge → (83,119)
+      Right circle: center (108,119) r=9 rightmost edge → (117,119)
+      Top intersection of both circles:
+        x = 100 (symmetry)
+        y = 119 − √(9²−8²) = 119 − √17 ≈ 115  ← path start/end
+
+      Arc 1: (100,115) → (117,119)  dist=√(17²+4²)≈17.46 < 18 ✓
+      Arc 2: (83,119)  → (100,115)  dist=√(17²+4²)≈17.46 < 18 ✓
+
+    Drawing order:
+      1. Start at top-center intersection (100,115)
+      2. CW arc over right bulge to (117,119)
+      3. Cubic bézier down right side to bottom tip (100,137)
+      4. Cubic bézier up left  side to (83,119)
+      5. CW arc over left  bulge back to (100,115)
+      6. Z — explicit close
+  -->
+  <path d="M100,115
+           A9,9 0 0 1 117,119
+           C117,128 108,134 100,137
+           C92,134 83,128 83,119
+           A9,9 0 0 1 100,115
+           Z"
+        fill="#FFFFFF" />
+
+</svg>
