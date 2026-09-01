@@ -1,0 +1,520 @@
+﻿<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Annapurna - Checkout</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=DM+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link rel="stylesheet" href="../assets/styles.css">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            font-family: 'Material Symbols Outlined';
+            font-size: 24px;
+            line-height: 1;
+            display: inline-block;
+            text-transform: none;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+        }
+    body {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+      <script src="../cart.js"></script>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-background dark:bg-background w-full top-0 sticky z-50">
+<div class="flex justify-between items-center px-margin-mobile py-base w-full max-w-7xl mx-auto">
+<button id="backBtn" aria-label="Go back" class="text-primary dark:text-inverse-primary hover:bg-surface-container dark:hover:bg-surface-container transition-colors active:scale-95 transition-transform p-2 rounded-full flex items-center justify-center" title="Go Back">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md text-primary dark:text-inverse-primary tracking-tight">Checkout</h1>
+<button id="headerCartBtn" aria-label="View cart" class="text-primary dark:text-inverse-primary hover:bg-surface-container dark:hover:bg-surface-container transition-colors active:scale-95 transition-transform p-2 rounded-full flex items-center justify-center relative" title="View Cart">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+<span id="cartBadgeCount" class="absolute top-1 right-1 bg-error text-on-error font-label-sm text-[10px] w-4 h-4 flex items-center justify-center rounded-full">3</span>
+</button>
+</div>
+</header>
+<main class="flex-grow px-margin-mobile pb-32 max-w-md mx-auto w-full flex flex-col gap-md pt-sm">
+<!-- Stepper -->
+<div class="flex justify-between items-center px-4 py-2 bg-surface-container-low rounded-full">
+<div id="step1Indicator" class="flex items-center gap-1">
+<span class="text-primary font-label-md font-bold">① Address</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant text-[16px]">chevron_right</span>
+<div id="step2Indicator" class="flex items-center gap-1 opacity-50 transition-opacity">
+<span id="step2Text" class="text-on-surface-variant font-label-md">② Payment</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant text-[16px]">chevron_right</span>
+<div id="step3Indicator" class="flex items-center gap-1 opacity-50">
+<span class="text-on-surface-variant font-label-md">③ Confirm Order</span>
+</div>
+</div>
+
+<!-- Address Card -->
+<section class="bg-surface-container-lowest rounded-[24px] p-md shadow-[0_4px_24px_rgba(112,87,64,0.06)] border border-surface-variant flex flex-col gap-sm">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined bg-primary/10 p-1 rounded-full text-[20px]" data-icon="push_pin">push_pin</span>
+<h2 class="font-headline-md text-[18px]">Delivery Address</h2>
+</div>
+<a id="changeAddressBtn" class="text-primary font-label-md underline underline-offset-4 cursor-pointer" href="#">Change</a>
+</div>
+<div class="bg-surface-container-low rounded-xl p-4 flex justify-between items-start mt-2">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="font-bold text-on-background">Ananya Sharma</span>
+<span class="bg-secondary-container text-on-secondary-container font-label-sm px-2 py-0.5 rounded-full text-[10px]">Home</span>
+</div>
+<span class="text-on-surface-variant text-[14px]">+91 98765 43210</span>
+<p id="deliveryAddressText" class="text-on-surface-variant text-[14px] leading-snug mt-1">
+            Flat 402, Sunshine Apartments,<br/>
+            Koramangala 4th Block,<br/>
+            Bengaluru, Karnataka 560034
+          </p>
+<div class="mt-3">
+<span class="bg-primary/10 text-primary font-label-sm px-3 py-1 rounded-full border border-primary/20">Default Address</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary" data-icon="location_on">location_on</span>
+</div>
+</section>
+
+<!-- Delivery Options Card -->
+<section class="bg-surface-container-lowest rounded-[24px] p-md shadow-[0_4px_24px_rgba(112,87,64,0.06)] border border-surface-variant flex flex-col gap-sm">
+<div class="flex items-center gap-2 text-primary mb-2">
+<span class="material-symbols-outlined bg-primary/10 p-1 rounded-full text-[20px]" data-icon="local_shipping">local_shipping</span>
+<h2 class="font-headline-md text-[18px]">Delivery Options</h2>
+</div>
+<div class="flex flex-col gap-3">
+<!-- Standard Delivery Option -->
+<label id="optionStandard" class="flex items-center justify-between p-3 rounded-xl border-2 border-primary bg-primary/5 cursor-pointer transition-all">
+<div class="flex items-center gap-3">
+<input type="radio" name="deliveryOption" value="standard" checked class="hidden" />
+<div id="dotStandard" class="w-5 h-5 rounded-full border-2 border-primary flex items-center justify-center">
+<div class="w-2.5 h-2.5 rounded-full bg-primary"></div>
+</div>
+<span class="font-label-md text-on-background">Standard Delivery</span>
+</div>
+<span class="font-bold text-primary">FREE</span>
+</label>
+
+<!-- Express Delivery Option -->
+<label id="optionExpress" class="flex items-center justify-between p-3 rounded-xl border border-surface-variant cursor-pointer hover:bg-surface-container-low transition-all">
+<div class="flex items-center gap-3">
+<input type="radio" name="deliveryOption" value="express" class="hidden" />
+<div id="dotExpress" class="w-5 h-5 rounded-full border-2 border-outline flex items-center justify-center">
+<div class="w-2.5 h-2.5 rounded-full bg-primary hidden"></div>
+</div>
+<span class="font-body-md text-on-surface-variant text-[15px]">Express Delivery</span>
+</div>
+<span class="font-label-md text-on-surface-variant">₹80</span>
+</label>
+</div>
+<div id="freeDeliveryBanner" class="mt-2 bg-secondary-container/30 border border-secondary-container text-on-secondary-container text-[12px] p-2 rounded-lg flex items-center justify-center font-label-md">
+        Add items worth ₹280 more to get FREE delivery
+      </div>
+</section>
+
+<!-- Order Items Card -->
+<section class="bg-surface-container-lowest rounded-[24px] p-md shadow-[0_4px_24px_rgba(112,87,64,0.06)] border border-surface-variant flex flex-col gap-sm">
+<div class="flex justify-between items-center mb-2">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined bg-primary/10 p-1 rounded-full text-[20px]" data-icon="shopping_bag">shopping_bag</span>
+<h2 id="orderItemsCount" class="font-headline-md text-[18px]">Order Items (3)</h2>
+</div>
+<a id="viewCartBtn" class="text-primary font-label-md underline underline-offset-4 cursor-pointer" href="#">View Cart</a>
+</div>
+<div class="flex flex-col gap-4">
+<!-- Item 1 -->
+<div class="flex items-center gap-4 border-b border-surface-variant pb-4">
+<img class="w-16 h-16 rounded-lg object-cover bg-surface-container-high border border-surface-variant" src="../assets/images/curry_bowl.svg"/>
+<div class="flex-grow flex flex-col gap-1">
+<h3 class="font-label-md text-on-background">Andhra Style Mango Pickle</h3>
+<span class="text-[12px] text-on-surface-variant">Grandma's Kitchen • 250g</span>
+<div class="flex justify-between items-center mt-1">
+<span class="text-[13px] text-on-surface-variant">Qty: 1</span>
+<span class="font-bold text-primary">₹220</span>
+</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex items-center gap-4 border-b border-surface-variant pb-4">
+<img class="w-16 h-16 rounded-lg object-cover bg-surface-container-high border border-surface-variant" src="../assets/images/thali.svg"/>
+<div class="flex-grow flex flex-col gap-1">
+<h3 class="font-label-md text-on-background">Sweet &amp; Sour Lemon Pickle</h3>
+<span class="text-[12px] text-on-surface-variant">Sri Spices • 250g</span>
+<div class="flex justify-between items-center mt-1">
+<span class="text-[13px] text-on-surface-variant">Qty: 1</span>
+<span class="font-bold text-primary">₹180</span>
+</div>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="flex items-center gap-4">
+<img class="w-16 h-16 rounded-lg object-cover bg-surface-container-high border border-surface-variant" src="../assets/images/rice_bowl.svg"/>
+<div class="flex-grow flex flex-col gap-1">
+<h3 class="font-label-md text-on-background">Spicy Mixed Veg Pickle</h3>
+<span class="text-[12px] text-on-surface-variant">Annapurna Originals • 300g</span>
+<div class="flex justify-between items-center mt-1">
+<span class="text-[13px] text-on-surface-variant">Qty: 1</span>
+<span class="font-bold text-primary">₹200</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Price Details Section -->
+<section class="grid grid-cols-1 gap-md">
+<!-- Coupon Card -->
+<div class="bg-surface-container-lowest rounded-[24px] p-md shadow-[0_4px_24px_rgba(112,87,64,0.06)] border border-surface-variant flex flex-col justify-between h-full">
+<div>
+<h3 class="font-headline-md text-[16px] text-primary mb-3">Apply Coupon</h3>
+<!-- Applied Banner -->
+<div id="couponAppliedBox" class="border border-secondary border-dashed rounded-xl p-3 bg-secondary/5 flex justify-between items-center">
+<div class="flex flex-col">
+<span class="font-bold text-secondary text-[14px]">SAVE10 Applied</span>
+<span class="text-[11px] text-on-surface-variant">You saved ₹60</span>
+</div>
+<button id="removeCouponBtn" aria-label="Remove coupon" class="text-error font-label-md text-[12px] hover:underline cursor-pointer">Remove</button>
+</div>
+
+<!-- Coupon Input Form (Hidden initially) -->
+<div id="couponInputContainer" class="hidden flex gap-2 mt-2">
+<label for="couponInput" class="sr-only">Enter coupon code</label>
+<input id="couponInput" class="flex-1 bg-surface-container rounded-xl px-3 py-2 text-xs text-on-background border border-outline-variant focus:outline-none focus:ring-1 focus:ring-primary" placeholder="Enter coupon (e.g. SAVE10)" type="text"/>
+<button id="applyCouponBtn" aria-label="Apply coupon" class="bg-primary text-on-primary font-label-md text-xs px-4 py-2 rounded-xl hover:bg-primary/90 transition-colors">Apply</button>
+</div>
+<p id="couponMsg" class="hidden text-[11px] text-error mt-1"></p>
+</div>
+</div>
+
+<!-- Price Breakdown -->
+<div class="bg-surface-container-lowest rounded-[24px] p-md shadow-[0_4px_24px_rgba(112,87,64,0.06)] border border-surface-variant h-full">
+<h3 class="font-headline-md text-[16px] text-primary mb-4">Price Details</h3>
+<div class="flex flex-col gap-2 text-[14px] text-on-surface-variant">
+<div class="flex justify-between">
+<span id="subtotalItemsCount">Subtotal (3 items)</span>
+<span id="subtotalDisplay">₹600</span>
+</div>
+<div id="discountRow" class="flex justify-between text-secondary">
+<span>Discount (<span id="couponCodeDisplay">SAVE10</span>)</span>
+<span id="discountDisplay">-₹60</span>
+</div>
+<div class="flex justify-between">
+<span>Delivery Fee</span>
+<span id="deliveryFeeDisplay" class="text-primary font-bold">FREE</span>
+</div>
+<div class="flex justify-between">
+<span>Packaging Charges</span>
+<span>₹60</span>
+</div>
+</div>
+<hr class="border-surface-variant my-4"/>
+<div class="flex justify-between items-center">
+<span class="font-headline-md text-[18px] text-on-background">Total Amount</span>
+<span id="totalAmountDisplay" class="font-headline-md text-[20px] text-primary">₹600</span>
+</div>
+<div id="savingsBanner" class="mt-3 bg-secondary-container/20 text-secondary text-center text-[12px] p-2 rounded-lg font-label-md">
+          You will save ₹60 on this order
+        </div>
+</div>
+</section>
+
+<!-- Secure Checkout Banner -->
+<div class="bg-primary/5 rounded-xl p-3 flex items-center justify-center gap-3 border border-primary/10 mt-2 mb-4">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="security">security</span>
+<span class="text-primary font-label-md text-[13px]">Secure Checkout</span>
+<span class="bg-secondary text-on-secondary text-[10px] px-2 py-0.5 rounded-full font-bold ml-2 tracking-wide">100% SECURE 🔒</span>
+</div>
+</main>
+
+<!-- Sticky Bottom Button -->
+<div class="fixed bottom-0 left-0 w-full z-50 bg-surface-container-lowest border-t border-surface-variant shadow-[0_-8px_24px_rgba(112,87,64,0.05)] p-4">
+<button id="continuePaymentBtn" class="w-full max-w-md mx-auto bg-primary hover:bg-surface-tint text-on-primary font-headline-md text-[16px] py-4 rounded-full shadow-[0_4px_16px_rgba(159,61,0,0.3)] active:scale-95 transition-all flex items-center justify-center gap-2">
+      Continue to Payment <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+
+<script>
+// ==========================================
+// MOCK DATA & STATE VARIABLES
+// ==========================================
+
+let subtotal = (typeof AnnapurnaCart !== 'undefined') ? AnnapurnaCart.getTotal() : 600;
+let discount = 60;
+let appliedCouponCode = "SAVE10";
+let deliveryFee = 0; // 0 = Standard (FREE), 80 = Express (₹80)
+let packagingCharge = 60;
+
+// ==========================================
+// PRICE CALCULATION & UI UPDATES
+// ==========================================
+
+function updateCalculations() {
+  const totalAmount = subtotal - discount + deliveryFee + packagingCharge;
+
+  // Subtotal
+  const subtotalDisplay = document.getElementById("subtotalDisplay");
+  if (subtotalDisplay) subtotalDisplay.textContent = `₹${subtotal}`;
+
+  // Discount Row
+  const discountRow = document.getElementById("discountRow");
+  const discountDisplay = document.getElementById("discountDisplay");
+  const couponCodeDisplay = document.getElementById("couponCodeDisplay");
+  if (discount > 0) {
+    if (discountRow) discountRow.classList.remove("hidden");
+    if (discountDisplay) discountDisplay.textContent = `-₹${discount}`;
+    if (couponCodeDisplay) couponCodeDisplay.textContent = appliedCouponCode;
+  } else {
+    if (discountRow) discountRow.classList.add("hidden");
+  }
+
+  // Delivery Fee
+  const deliveryFeeDisplay = document.getElementById("deliveryFeeDisplay");
+  if (deliveryFeeDisplay) {
+    if (deliveryFee === 0) {
+      deliveryFeeDisplay.textContent = "FREE";
+      deliveryFeeDisplay.className = "text-primary font-bold";
+    } else {
+      deliveryFeeDisplay.textContent = `₹${deliveryFee}`;
+      deliveryFeeDisplay.className = "font-bold text-on-surface-variant";
+    }
+  }
+
+  // Total Amount
+  const totalAmountDisplay = document.getElementById("totalAmountDisplay");
+  if (totalAmountDisplay) totalAmountDisplay.textContent = `₹${totalAmount}`;
+
+  // Savings Banner
+  const savingsBanner = document.getElementById("savingsBanner");
+  if (savingsBanner) {
+    if (discount > 0) {
+      savingsBanner.classList.remove("hidden");
+      savingsBanner.textContent = `You will save ₹${discount} on this order`;
+    } else {
+      savingsBanner.classList.add("hidden");
+    }
+  }
+
+  // Dynamic Free Delivery Banner
+  const freeDeliveryThreshold = 500;
+  const freeDeliveryBanner = document.getElementById("freeDeliveryBanner");
+  if (freeDeliveryBanner) {
+    if (subtotal >= freeDeliveryThreshold || deliveryFee !== 0) {
+      freeDeliveryBanner.classList.add("hidden");
+    } else {
+      const needed = freeDeliveryThreshold - subtotal;
+      freeDeliveryBanner.textContent = `Add items worth ₹${needed} more to get FREE delivery`;
+      freeDeliveryBanner.classList.remove("hidden");
+    }
+  }
+}
+
+// ==========================================
+// DELIVERY OPTION SELECTION LOGIC
+// ==========================================
+
+function selectDeliveryOption(type) {
+  const optionStandard = document.getElementById("optionStandard");
+  const optionExpress = document.getElementById("optionExpress");
+  const dotStandard = document.getElementById("dotStandard");
+  const dotExpress = document.getElementById("dotExpress");
+
+  if (type === "standard") {
+    deliveryFee = 0;
+    const stdInput = document.querySelector('input[name="deliveryOption"][value="standard"]');
+    if (stdInput) stdInput.checked = true;
+
+    // Standard Selected Styling
+    optionStandard.className = "flex items-center justify-between p-3 rounded-xl border-2 border-primary bg-primary/5 cursor-pointer transition-all";
+    dotStandard.className = "w-5 h-5 rounded-full border-2 border-primary flex items-center justify-center";
+    dotStandard.querySelector("div").className = "w-2.5 h-2.5 rounded-full bg-primary";
+
+    // Express Deselected Styling
+    optionExpress.className = "flex items-center justify-between p-3 rounded-xl border border-surface-variant cursor-pointer hover:bg-surface-container-low transition-all";
+    dotExpress.className = "w-5 h-5 rounded-full border-2 border-outline flex items-center justify-center";
+    dotExpress.querySelector("div").className = "w-2.5 h-2.5 rounded-full bg-primary hidden";
+  } else if (type === "express") {
+    deliveryFee = 80;
+    const expInput = document.querySelector('input[name="deliveryOption"][value="express"]');
+    if (expInput) expInput.checked = true;
+
+    // Express Selected Styling
+    optionExpress.className = "flex items-center justify-between p-3 rounded-xl border-2 border-primary bg-primary/5 cursor-pointer transition-all";
+    dotExpress.className = "w-5 h-5 rounded-full border-2 border-primary flex items-center justify-center";
+    dotExpress.querySelector("div").className = "w-2.5 h-2.5 rounded-full bg-primary";
+
+    // Standard Deselected Styling
+    optionStandard.className = "flex items-center justify-between p-3 rounded-xl border border-surface-variant cursor-pointer hover:bg-surface-container-low transition-all";
+    dotStandard.className = "w-5 h-5 rounded-full border-2 border-outline flex items-center justify-center";
+    dotStandard.querySelector("div").className = "w-2.5 h-2.5 rounded-full bg-primary hidden";
+  }
+
+  updateCalculations();
+}
+
+// ==========================================
+// COUPON REMOVAL & RE-APPLICATION
+// ==========================================
+
+function removeCoupon() {
+  discount = 0;
+  appliedCouponCode = "";
+
+  const couponAppliedBox = document.getElementById("couponAppliedBox");
+  const couponInputContainer = document.getElementById("couponInputContainer");
+  const couponMsg = document.getElementById("couponMsg");
+
+  if (couponAppliedBox) couponAppliedBox.classList.add("hidden");
+  if (couponInputContainer) couponInputContainer.classList.remove("hidden");
+  if (couponMsg) couponMsg.classList.add("hidden");
+
+  updateCalculations();
+}
+
+function applyCoupon() {
+  const couponInput = document.getElementById("couponInput");
+  const couponMsg = document.getElementById("couponMsg");
+  const couponAppliedBox = document.getElementById("couponAppliedBox");
+  const couponInputContainer = document.getElementById("couponInputContainer");
+
+  if (!couponInput) return;
+  const code = couponInput.value.trim().toUpperCase();
+
+  if (code === "SAVE10") {
+    discount = 60;
+    appliedCouponCode = "SAVE10";
+
+    if (couponInputContainer) couponInputContainer.classList.add("hidden");
+    if (couponAppliedBox) couponAppliedBox.classList.remove("hidden");
+    if (couponMsg) couponMsg.classList.add("hidden");
+
+    updateCalculations();
+  } else {
+    if (couponMsg) {
+      couponMsg.textContent = "Invalid coupon code. Try entering 'SAVE10'.";
+      couponMsg.classList.remove("hidden");
+    }
+  }
+}
+
+// ==========================================
+// INITIALIZATION & NAVIGATION HANDLERS
+// ==========================================
+
+const BASE_URL = "..";
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Update Item Counts
+  let totalItems = 3;
+  if (typeof AnnapurnaCart !== 'undefined') {
+    const items = AnnapurnaCart.getItems();
+    if (items && items.length > 0) {
+      totalItems = items.reduce((acc, item) => acc + (item.quantity || 1), 0);
+    }
+  }
+  const orderItemsCount = document.getElementById("orderItemsCount");
+  if (orderItemsCount) orderItemsCount.textContent = `Order Items (${totalItems})`;
+  const cartBadgeCount = document.getElementById("cartBadgeCount");
+  if (cartBadgeCount) cartBadgeCount.textContent = totalItems > 99 ? '99+' : totalItems;
+  const subtotalItemsCount = document.getElementById("subtotalItemsCount");
+  if (subtotalItemsCount) subtotalItemsCount.textContent = `Subtotal (${totalItems} items)`;
+
+  // Back button
+  const backBtn = document.getElementById("backBtn");
+  if (backBtn) {
+    backBtn.addEventListener("click", () => {
+      if (window.history.length > 1) {
+        window.history.back();
+      } else {
+        window.location.href = `${BASE_URL}/annapurna_home_screen/code.html`;
+      }
+    });
+  }
+
+  // Header & View Cart buttons
+  const headerCartBtn = document.getElementById("headerCartBtn");
+  const viewCartBtn = document.getElementById("viewCartBtn");
+
+  const goToCart = () => {
+    window.location.href = `${BASE_URL}/shopping_cart_delivery_selection/code.html`;
+  };
+
+  if (headerCartBtn) headerCartBtn.addEventListener("click", goToCart);
+  if (viewCartBtn) viewCartBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    goToCart();
+  });
+
+  // Change Address link
+  const changeAddressBtn = document.getElementById("changeAddressBtn");
+  if (changeAddressBtn) {
+    changeAddressBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      const addrEl = document.getElementById("deliveryAddressText");
+      if(addrEl) {
+          // simple regex to replace br tags with commas for the prompt
+          let currentAddr = addrEl.innerHTML.replace(/<br\s*[\/]?>/gi, ", ").trim();
+          const newAddr = prompt("Enter new delivery address:", currentAddr);
+          if (newAddr) {
+              // Convert commas back to line breaks for display
+              addrEl.innerHTML = newAddr.split(",").map(part => part.trim()).join("<br/>");
+              alert("Delivery address updated successfully.");
+          }
+      }
+    });
+  }
+
+  // Delivery Option Listeners
+  const optionStandard = document.getElementById("optionStandard");
+  const optionExpress = document.getElementById("optionExpress");
+
+  if (optionStandard) optionStandard.addEventListener("click", () => selectDeliveryOption("standard"));
+  if (optionExpress) optionExpress.addEventListener("click", () => selectDeliveryOption("express"));
+
+  // Coupon Listeners
+  const removeCouponBtn = document.getElementById("removeCouponBtn");
+  const applyCouponBtn = document.getElementById("applyCouponBtn");
+
+  if (removeCouponBtn) removeCouponBtn.addEventListener("click", removeCoupon);
+  if (applyCouponBtn) applyCouponBtn.addEventListener("click", applyCoupon);
+
+  // Continue to Payment Button
+  const continuePaymentBtn = document.getElementById("continuePaymentBtn");
+  if (continuePaymentBtn) {
+    continuePaymentBtn.addEventListener("click", () => {
+      const finalTotal = subtotal - discount + deliveryFee + packagingCharge;
+      sessionStorage.setItem('annapurna_order_total', finalTotal);
+
+      // Visually advance stepper
+      const step1Indicator = document.getElementById("step1Indicator");
+      if (step1Indicator) {
+          step1Indicator.innerHTML = '<span class="material-symbols-outlined text-primary font-bold text-[18px]">check_circle</span><span class="text-on-surface-variant font-label-md">Address</span>';
+      }
+      const step2Indicator = document.getElementById("step2Indicator");
+      const step2Text = document.getElementById("step2Text");
+      if (step2Indicator) step2Indicator.classList.remove("opacity-50");
+      if (step2Text) step2Text.className = "text-primary font-label-md font-bold";
+
+      // Navigate to Payment selection
+      setTimeout(() => {
+        window.location.href = `${BASE_URL}/checkout_payment_method_selection/code.html`;
+      }, 300);
+    });
+  }
+
+  // Initial Calculation
+  updateCalculations();
+});
+</script>
+</body></html>
